@@ -7,7 +7,7 @@
   --text: #f1f3f8;
   --muted: #9ca3b5;
   --line: rgba(255,255,255,.10);
-  --accent: #8b7cff;
+  --accent: #5B8CFF;
   --accent-2: #61dafb;
   --max: 1120px;
 }
@@ -108,7 +108,7 @@ body.light {
   --text: #171923;
   --muted: #596174;
   --line: rgba(20,25,40,.12);
-  --accent: #6657e8;
+  --accent: #4C74D9;
   --accent-2: #087f9c;
 }
 body.light .alt { background: #eceef5; }
@@ -150,3 +150,14 @@ body.light .button.primary { background: #171923; color: #fff; }
   .year { padding-right: 6px; white-space: normal; }
   .timeline-card:before { left: -25px; }
 }
+
+.project-card { position: relative; display: block; color: inherit; }
+.project-link {
+  position: absolute;
+  right: 28px;
+  bottom: 27px;
+  color: var(--accent);
+  font: 11px 'DM Mono', monospace;
+  opacity: .85;
+}
+.project-card:hover .project-link { opacity: 1; }
