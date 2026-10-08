@@ -1,3 +1,27 @@
+const themeToggle = document.getElementById('themeToggle');
+
+function setTheme(theme) {
+  document.body.classList.toggle('light', theme === 'light');
+  if (themeToggle) {
+    themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+    themeToggle.setAttribute(
+      'aria-label',
+      theme === 'light' ? 'Dark Mode aktivieren' : 'Light Mode aktivieren'
+    );
+  }
+  localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme');
+const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+setTheme(savedTheme || preferredTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    setTheme(document.body.classList.contains('light') ? 'dark' : 'light');
+  });
+}
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
