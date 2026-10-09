@@ -156,3 +156,38 @@ body.light .button.primary { background: #19191b; color: #fff; border-color: #19
   .interest-grid { grid-template-columns: 1fr; }
   .streak-card { padding: 22px; }
 }
+
+:root { --accent: #78A9FF; }
+body { background-color: #090909; }
+body.light { background-color: #f5f6fa; }
+.stream-time { color: #ffbd59 !important; font-weight: 700; }
+.time-greeting { margin-top: 14px; color: var(--muted); font-size: clamp(14px, 1.6vw, 17px); animation: greeting-in .8s ease both; }
+
+.social-links, .contact-links { display:flex; justify-content:center; flex-wrap:wrap; gap:14px; }
+.social-links a, .contact-links a {
+ display:inline-flex; align-items:center; justify-content:center; gap:8px; min-width:132px;
+ padding:13px 19px; border:1px solid rgba(255,255,255,.16); border-radius:13px; color:#f7f9ff;
+ font-weight:650; font-size:14px; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+ box-shadow:0 8px 28px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.12);
+ transition:transform .22s ease, box-shadow .22s ease;
+}
+.social-links a:hover, .contact-links a:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.22); }
+.social-links a[href*="linkedin"], .contact-links a[href*="linkedin"] { background:linear-gradient(135deg,rgba(10,102,194,.72),rgba(10,102,194,.25)); border-color:rgba(83,164,255,.42); }
+.social-links a[href*="instagram"], .contact-links a[href*="instagram"] { background:linear-gradient(125deg,rgba(255,190,65,.58),rgba(255,105,120,.48) 48%,rgba(155,85,220,.58)); border-color:rgba(228,147,207,.42); }
+.social-links a[href*="github"], .contact-links a[href*="github"] { background:rgba(255,255,255,.07); }
+body.light .social-links a, body.light .contact-links a { color:#171923; border-color:rgba(20,25,40,.12); }
+body.light .social-links a[href*="linkedin"], body.light .contact-links a[href*="linkedin"] { background:linear-gradient(135deg,rgba(10,102,194,.18),rgba(10,102,194,.08)); }
+body.light .social-links a[href*="instagram"], body.light .contact-links a[href*="instagram"] { background:linear-gradient(125deg,rgba(255,190,65,.25),rgba(255,105,120,.20),rgba(155,85,220,.24)); }
+body.light .social-links a[href*="github"], body.light .contact-links a[href*="github"] { background:rgba(30,35,55,.045); }
+
+.confetti-button { position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:10px; border:1px solid var(--line); background:rgba(120,169,255,.12); cursor:pointer; font-size:17px; transition:transform .2s,background .2s; }
+.confetti-button:hover { transform:rotate(-8deg) scale(1.08); background:rgba(120,169,255,.22); }
+.interest-card, .stat-card { position:relative; }
+.reveal-on-scroll { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal-on-scroll.is-visible { opacity:1; transform:translateY(0); }
+@keyframes greeting-in { from {opacity:0;transform:translateY(8px)} to {opacity:1;transform:translateY(0)} }
+.confetti-piece { position:absolute; z-index:20; width:7px; height:10px; border-radius:2px; pointer-events:none; animation:confetti-fall 1s cubic-bezier(.12,.7,.2,1) forwards; }
+@keyframes confetti-fall { from {opacity:1;transform:translate(0,0) rotate(0)} to {opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot))} }
+.footer-meta { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
+@media(max-width:640px) { .footer-meta {flex-direction:column;gap:4px;align-items:center} }
+@media(prefers-reduced-motion:reduce) { .reveal-on-scroll,.time-greeting {animation:none!important;transition:none!important} }

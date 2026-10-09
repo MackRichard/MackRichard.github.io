@@ -139,3 +139,31 @@ themeToggle?.addEventListener('click', () => {
 languageToggle?.addEventListener('click', () => {
   setLanguage(document.documentElement.lang === 'de' ? 'en' : 'de');
 });
+
+(function(){
+ const greeting=document.getElementById('timeGreeting');
+ if(greeting){
+  const h=new Date().getHours();
+  const en=(document.documentElement.lang||'').toLowerCase().startsWith('en');
+  const choices=h<5
+   ? {de:['Noch wach? Schön, dass du vorbeischaust.','Ein später Gruß – schön, dass du hier bist.'],en:['Still up? Glad you stopped by.','A late-night hello — glad you’re here.']}
+   : h<11
+   ? {de:['Guten Morgen – schön, dass du da bist!','Ich wünsche dir einen guten Start in den Tag.'],en:['Good morning — great to see you here!','Hope your day is off to a great start.']}
+   : h<18
+   ? {de:['Schön, dass du vorbeischaust!','Ich freue mich, dass du hier bist.'],en:['Glad you stopped by!','Great to have you here.']}
+   : {de:['Guten Abend – schön, dass du hier bist!','Schön, dass du vorbeischaust.'],en:['Good evening — glad you’re here!','Nice to have you here this evening.']};
+  greeting.textContent=choices[en?'en':'de'][Math.floor(Math.random()*2)];
+  greeting.dataset.de=choices.de[Math.floor(Math.random()*2)];
+  greeting.dataset.en=choices.en[Math.floor(Math.random()*2)];
+ }
+ const items=document.querySelectorAll('section,.project-card,.timeline-item,.language,.friend-card,.interest-card,.stat-card');
+ items.forEach((el,i)=>{el.classList.add('reveal-on-scroll');el.style.transitionDelay=(Math.min(i%5,4)*65)+'ms';});
+ if('IntersectionObserver' in window){
+  const ob=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');ob.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -25px 0px'});
+  items.forEach(el=>ob.observe(el));
+ } else items.forEach(el=>el.classList.add('is-visible'));
+ document.querySelectorAll('.confetti-button').forEach(btn=>btn.addEventListener('click',()=>{
+  const card=btn.parentElement; const colors=['#78A9FF','#ffbd59','#ff6b9d','#8be9a8','#c7a4ff'];
+  for(let i=0;i<36;i++){const p=document.createElement('span');p.className='confetti-piece';p.style.left=(45+Math.random()*10)+'%';p.style.top='24px';p.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];p.style.setProperty('--dx',((Math.random()-.5)*240)+'px');p.style.setProperty('--dy',(80+Math.random()*160)+'px');p.style.setProperty('--rot',(Math.random()*720-360)+'deg');card.appendChild(p);setTimeout(()=>p.remove(),1100);}
+ }));
+})();
