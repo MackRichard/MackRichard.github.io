@@ -3,129 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Richard Mack – Schüler, Programmierer und MINT-Enthusiast aus Berlin.">
-  <title>Richard Mack | Portfolio</title>
+  <meta name="description" content="Richard Mack – Schüler, Programmierer und MINT-Enthusiast aus Berlin." data-meta-i18n="meta.description">
+  <meta name="theme-color" content="#0b0b0d">
+  <title data-i18n="meta.title">Richard Mack | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="navbar">
-    <a class="brand" href="#home">RM<span>.</span></a>
-    <nav>
-      <a href="#about">Über mich</a>
-      <a href="#projects">Projekte</a>
-      <a href="#skills">Skills</a>
-      <a href="#timeline">Mein Weg</a>
-      <a href="#contact">Kontakt</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Farbschema wechseln">☀️</button>
+    <a class="brand" href="#home">Richard Mack</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#about" data-i18n="nav.about">Über mich</a>
+      <a href="#projects" data-i18n="nav.projects">Projekte</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#timeline" data-i18n="nav.path">Mein Weg</a>
+      <a href="#contact" data-i18n="nav.contact">Kontakt</a>
     </nav>
+    <div class="nav-controls">
+      <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch to English">EN</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Light Mode aktivieren">☀</button>
+    </div>
   </header>
 
   <main>
     <section id="home" class="hero">
       <div class="hero-content">
-        <p class="eyebrow">PROGRAMMIERER · MINT · BERLIN</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">PROGRAMMIERER · MINT · BERLIN</p>
         <h1>Richard<br><span>Mack.</span></h1>
-        <p class="hero-text">
-          Ich bin ein ambitionierter Schüler mit einer Leidenschaft für Informatik,
-          Mathematik und das Entwickeln eigener Ideen – von Simulationen bis hin zu
-          meiner eigenen Programmiersprache.
+        <p class="hero-text" data-i18n="hero.description">
+          Ich bin ein ambitionierter Schüler mit einer Leidenschaft für Informatik, Mathematik und das Entwickeln eigener Ideen – von Simulationen bis hin zu meiner eigenen Programmiersprache.
         </p>
         <div class="buttons">
-          <a class="button primary" href="#projects">Projekte ansehen</a>
+          <a class="button primary" href="#projects" data-i18n="hero.projectsButton">Projekte ansehen</a>
           <a class="button secondary" href="https://github.com/MackRichard" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
-      </div>
-      <div class="hero-orbit" aria-hidden="true">
-        <div class="orbit orbit-1"></div>
-        <div class="orbit orbit-2"></div>
-        <div class="orbit-core">RM</div>
       </div>
     </section>
 
     <section id="about" class="section">
-      <div class="section-heading">
-        <span>01</span>
-        <h2>Über mich</h2>
-      </div>
+      <div class="section-heading"><h2 data-i18n="about.heading">Über mich</h2></div>
       <div class="about-grid">
         <div>
-          <p class="lead">
-            Ich interessiere mich dafür, aus mathematischen Ideen funktionierende
-            Programme zu machen und dabei ständig Neues auszuprobieren.
-          </p>
-          <p>
-            Besonders spannend finde ich Projekte, bei denen man nicht einfach nur
-            vorhandene Werkzeuge benutzt, sondern selbst etwas entwickelt und
-            versteht, was dahinter steckt. Deshalb beschäftige ich mich neben
-            Schulprojekten auch mit eigenen Simulationen, Algorithmen und langfristig
-            mit dem Bau einer eigenen Programmiersprache.
-          </p>
+          <p class="lead" data-i18n="about.lead">Ich interessiere mich dafür, aus mathematischen Ideen funktionierende Programme zu machen und dabei ständig Neues auszuprobieren.</p>
+          <p data-i18n="about.body">Besonders spannend finde ich Projekte, bei denen man nicht einfach nur vorhandene Werkzeuge benutzt, sondern selbst etwas entwickelt und versteht, was dahinter steckt. Deshalb beschäftige ich mich neben Schulprojekten auch mit eigenen Simulationen, Algorithmen und langfristig mit dem Bau einer eigenen Programmiersprache.</p>
         </div>
         <div class="facts">
-          <div><strong>11.</strong><span>Klasse · Q1</span></div>
-          <div><strong>2028</strong><span>Abitur</span></div>
-          <div><strong>MINT</strong><span>Profil seit Klasse 5</span></div>
-          <div><strong>JuFo</strong><span>Interesse an Jugend forscht</span></div>
+          <div><strong>11.</strong><span data-i18n="facts.grade">Klasse · Q1</span></div>
+          <div><strong>2028</strong><span data-i18n="facts.abitur">Abitur</span></div>
+          <div><strong>MINT</strong><span data-i18n="facts.mint">Profil seit Klasse 5</span></div>
+          <div><strong>JuFo</strong><span data-i18n="facts.jufo">Interesse an Jugend forscht</span></div>
         </div>
       </div>
     </section>
 
     <section id="projects" class="section alt">
-      <div class="section-heading">
-        <span>02</span>
-        <h2>Projekte</h2>
-      </div>
+      <div class="section-heading"><h2 data-i18n="projects.heading">Projekte</h2></div>
       <div class="project-grid">
-        <a class="project-card featured" href="https://github.com/MackRichard/Conways-Game-of-Life" target="_blank" rel="noopener">
-          <div class="project-number">01</div>
+        <a class="project-card featured" href="https://github.com/MackRichard/REPOSITORY-NAME-HIER-EINTRAGEN" target="_blank" rel="noopener">
           <h3>Conway's Game of Life</h3>
-          <p>Eine programmierte Simulation des bekannten zellulären Automaten. Ein Projekt zwischen Informatik, Mathematik und emergentem Verhalten.</p>
-          <div class="tags"><span>Python</span><span>Pygame</span><span>Simulation</span></div>
-          <div class="project-link">GitHub ↗</div>
+          <p data-i18n="projects.gameDescription">Eine programmierte Simulation des bekannten zellulären Automaten. Ein Projekt zwischen Informatik, Mathematik und emergentem Verhalten.</p>
+          <div class="tags"><span>Python</span><span>Pygame</span><span data-i18n="tags.simulation">Simulation</span></div>
+          <div class="project-link" data-i18n="projects.github">GitHub ↗</div>
         </a>
-
         <a class="project-card" href="https://github.com/MackRichard/REPOSITORY-NAME-HIER-EINTRAGEN" target="_blank" rel="noopener">
-          <div class="project-number">02</div>
-          <h3>Eigene Programmiersprache</h3>
-          <p>Ein zukünftiges Langzeitprojekt: eine eigene Programmiersprache mit Python als technischer Grundlage – von der Syntax bis zur Ausführung.</p>
-          <div class="tags"><span>Python</span><span>Compiler</span><span>Future</span></div>
-          <div class="project-link">GitHub ↗</div>
+          <h3 data-i18n="projects.languageTitle">Eigene Programmiersprache</h3>
+          <p data-i18n="projects.languageDescription">Ein zukünftiges Langzeitprojekt: eine eigene Programmiersprache mit Python als technischer Grundlage – von der Syntax bis zur Ausführung.</p>
+          <div class="tags"><span>Python</span><span data-i18n="tags.compiler">Compiler</span><span data-i18n="tags.planned">Geplant</span></div>
+          <div class="project-link" data-i18n="projects.github">GitHub ↗</div>
         </a>
-
         <a class="project-card" href="https://github.com/MackRichard/REPOSITORY-NAME-HIER-EINTRAGEN" target="_blank" rel="noopener">
-          <div class="project-number">03</div>
           <h3>Perlin-Noise-Map</h3>
-          <p>Generierung von organisch wirkenden Karten mithilfe von Perlin Noise. Ein Experiment mit Algorithmen, Zufall und prozeduraler Generierung.</p>
-          <div class="tags"><span>Python</span><span>Algorithmen</span><span>Procedural</span></div>
-          <div class="project-link">GitHub ↗</div>
+          <p data-i18n="projects.perlinDescription">Generierung von organisch wirkenden Karten mithilfe von Perlin Noise. Ein Experiment mit Algorithmen, Zufall und prozeduraler Generierung.</p>
+          <div class="tags"><span>Python</span><span data-i18n="tags.algorithms">Algorithmen</span><span>Procedural</span></div>
+          <div class="project-link" data-i18n="projects.github">GitHub ↗</div>
         </a>
-
         <a class="project-card" href="https://github.com/MackRichard/REPOSITORY-NAME-HIER-EINTRAGEN" target="_blank" rel="noopener">
-          <div class="project-number">04</div>
           <h3>Roulette</h3>
-          <p>Eine selbst programmierte Roulette-Anwendung als praktisches Projekt zum Arbeiten mit Logik, Zufall und Benutzerinteraktion.</p>
-          <div class="tags"><span>Python</span><span>Simulation</span><span>Logic</span></div>
-          <div class="project-link">GitHub ↗</div>
+          <p data-i18n="projects.rouletteDescription">Eine selbst programmierte Roulette-Anwendung als praktisches Projekt zum Arbeiten mit Logik, Zufall und Benutzerinteraktion.</p>
+          <div class="tags"><span>Python</span><span data-i18n="tags.simulation">Simulation</span><span>Logic</span></div>
+          <div class="project-link" data-i18n="projects.github">GitHub ↗</div>
         </a>
-
-        <a class="project-card research" href="https://github.com/MackRichard/REPOSITORY-NAME-HIER-EINTRAGEN" target="_blank" rel="noopener">
-          <div class="project-number">05</div>
+        <article class="project-card research">
           <h3>Jugend forscht</h3>
-          <p>Ich interessiere mich für Jugend forscht und möchte zukünftig eigene wissenschaftlich-technische Fragestellungen als Projekte verfolgen.</p>
-          <div class="tags"><span>MINT</span><span>Research</span><span>Future</span></div>
-          <div class="project-link">GitHub ↗</div>
-        </a>
+          <p data-i18n="projects.researchDescription">Ich interessiere mich für Jugend forscht und möchte zukünftig eigene wissenschaftlich-technische Fragestellungen als Projekte verfolgen.</p>
+          <div class="tags"><span>MINT</span><span>Research</span><span data-i18n="tags.planned">Geplant</span></div>
+        </article>
       </div>
     </section>
 
     <section id="skills" class="section">
-      <div class="section-heading">
-        <span>03</span>
-        <h2>Skills & Tools</h2>
-      </div>
+      <div class="section-heading"><h2 data-i18n="skills.heading">Skills & Tools</h2></div>
       <div class="skills-layout">
         <div>
-          <h3>Programmiersprachen</h3>
+          <h3 data-i18n="skills.languages">Programmiersprachen</h3>
           <div class="skill-list">
             <a href="https://www.python.org/" target="_blank" rel="noopener"><b>Python</b><span>↗</span></a>
             <a href="https://www.pygame.org/" target="_blank" rel="noopener"><b>Pygame</b><span>↗</span></a>
@@ -134,7 +103,7 @@
           </div>
         </div>
         <div>
-          <h3>Tools</h3>
+          <h3 data-i18n="skills.tools">Tools</h3>
           <div class="skill-list">
             <a href="https://git-scm.com/" target="_blank" rel="noopener"><b>Git</b><span>↗</span></a>
             <a href="https://github.com/" target="_blank" rel="noopener"><b>GitHub</b><span>↗</span></a>
@@ -147,76 +116,75 @@
     </section>
 
     <section id="timeline" class="section alt">
-      <div class="section-heading">
-        <span>04</span>
-        <h2>Mein Weg</h2>
-      </div>
+      <div class="section-heading"><h2 data-i18n="timeline.heading">Mein Weg</h2></div>
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="year">Kl. 1–4</div>
-          <div class="timeline-card"><h3>KreativitätsGrundschule Berlin Friedrichshain</h3><p>Grundschulzeit mit besonderem Fokus auf Kreativität.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">seit Kl. 5</div>
-          <div class="timeline-card"><h3>MINT-Profil</h3><p>Durchgehender Schwerpunkt auf Mathematik, Informatik, Naturwissenschaften und Technik seit der 5. Klasse.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2025</div>
-          <div class="timeline-card"><h3>Praktikum am dEIn-Labor · TU Berlin</h3><p>Praktikum am Elektrotechnik- und Informatik-Labor der TU Berlin mit Einblicken in technische und informatische Arbeitsbereiche.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2026–28</div>
-          <div class="timeline-card"><h3>Andreas Gymnasium · Q1</h3><p>11. Klasse mit MINT-Profil. Leistungskurse: Spezialleistungskurs Mathematik und Informatik.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2027</div>
-          <div class="timeline-card"><h3>Latinum</h3><p>Geplantes Latinum im Sommer 2027 nach Lateinunterricht von Klasse 7 bis einschließlich Klasse 11.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2028</div>
-          <div class="timeline-card"><h3>Abitur</h3><p>Geplanter Abschluss am Andreas Gymnasium Berlin Friedrichshain.</p></div>
-        </div>
+        <div class="timeline-item"><div class="year" data-i18n="timeline.grade1">Kl. 1–4</div><div class="timeline-card"><h3 data-i18n="timeline.schoolTitle">KreativitätsGrundschule Berlin Friedrichshain</h3><p data-i18n="timeline.schoolDescription">Grundschulzeit mit besonderem Fokus auf Kreativität.</p></div></div>
+        <div class="timeline-item"><div class="year" data-i18n="timeline.mintYear">seit Kl. 5</div><div class="timeline-card"><h3 data-i18n="timeline.mintTitle">MINT-Profil</h3><p data-i18n="timeline.mintDescription">Durchgehender Schwerpunkt auf Mathematik, Informatik, Naturwissenschaften und Technik seit der 5. Klasse.</p></div></div>
+        <div class="timeline-item"><div class="year">2025</div><div class="timeline-card"><h3 data-i18n="timeline.internshipTitle">Praktikum am dEIn-Labor · TU Berlin</h3><p data-i18n="timeline.internshipDescription">Praktikum am Elektrotechnik- und Informatik-Labor der TU Berlin mit Einblicken in technische und informatische Arbeitsbereiche.</p></div></div>
+        <div class="timeline-item"><div class="year">2026–28</div><div class="timeline-card"><h3 data-i18n="timeline.gymTitle">Andreas Gymnasium · Q1</h3><p data-i18n="timeline.gymDescription">11. Klasse mit MINT-Profil. Leistungskurse: Spezialleistungskurs Mathematik und Informatik.</p></div></div>
+        <div class="timeline-item"><div class="year">2027</div><div class="timeline-card"><h3 data-i18n="timeline.latinumTitle">Latinum</h3><p data-i18n="timeline.latinumDescription">Geplantes Latinum im Sommer 2027 nach Lateinunterricht von Klasse 7 bis einschließlich Klasse 11.</p></div></div>
+        <div class="timeline-item"><div class="year">2028</div><div class="timeline-card"><h3 data-i18n="timeline.abiturTitle">Abitur</h3><p data-i18n="timeline.abiturDescription">Geplanter Abschluss am Andreas Gymnasium Berlin Friedrichshain.</p></div></div>
       </div>
     </section>
 
     <section id="languages" class="section">
-      <div class="section-heading">
-        <span>05</span>
-        <h2>Sprachen</h2>
-      </div>
+      <div class="section-heading"><h2 data-i18n="languages.heading">Sprachen</h2></div>
       <div class="language-grid">
-        <div class="language"><span class="flag">DE</span><div><h3>Deutsch</h3><p>Muttersprache</p></div></div>
-        <div class="language"><span class="flag">EN</span><div><h3>Englisch</h3><p>Sehr gute Kenntnisse · Cambridge-Zertifikat in Vorbereitung</p></div></div>
-        <div class="language"><span class="flag">NL</span><div><h3>Niederländisch</h3><p>Alltagsverständigung</p></div></div>
-        <div class="language"><span class="flag">LA</span><div><h3>Latein</h3><p>Übersetzung · Unterricht Klasse 7–11 · Latinum 2027</p></div></div>
+        <div class="language"><span class="flag">DE</span><div><h3 data-i18n="languages.german">Deutsch</h3><p data-i18n="languages.germanLevel">Muttersprache</p></div></div>
+        <div class="language"><span class="flag">EN</span><div><h3 data-i18n="languages.english">Englisch</h3><p data-i18n="languages.englishLevel">Sehr gute Kenntnisse · Cambridge-Zertifikat in Vorbereitung</p></div></div>
+        <div class="language"><span class="flag">NL</span><div><h3 data-i18n="languages.dutch">Niederländisch</h3><p data-i18n="languages.dutchLevel">Alltagsverständigung</p></div></div>
+        <div class="language"><span class="flag">LA</span><div><h3 data-i18n="languages.latin">Latein</h3><p data-i18n="languages.latinLevel">Übersetzung · Unterricht Klasse 7–11 · Latinum 2027</p></div></div>
       </div>
     </section>
 
-    <section id="friends" class="section alt">
-      <div class="section-heading">
-        <span>06</span>
-        <h2>Netzwerk</h2>
+    <section id="interests" class="section alt">
+      <div class="section-heading"><h2 data-i18n="interests.heading">Interessen & Errungenschaften</h2></div>
+      <a class="achievement-card streak-card" href="https://www.duolingo.com/profile/DEIN-DUOLINGO-BENUTZERNAME" target="_blank" rel="noopener">
+        <div><p class="card-label" data-i18n="interests.streakLabel">Duolingo-Streak</p><h3 class="warm" data-i18n="interests.streakValue">1100+ Tage</h3><p class="muted" data-i18n="interests.streakDescription">Eine lange Lernserie – klicke, um mein Duolingo-Profil zu besuchen.</p></div>
+        <span class="card-arrow">↗</span>
+      </a>
+      <div class="interest-grid">
+        <article class="interest-card"><p class="card-label" data-i18n="interests.hobbyLabel">Lieblingshobby</p><h3 data-i18n="interests.hobbyValue">Spazieren gehen</h3></article>
+        <article class="interest-card"><p class="card-label" data-i18n="interests.artistLabel">Lieblingskünstler</p><h3>Kendrick Lamar</h3><p class="warm" data-i18n="interests.streamed">45.000+ Minuten gestreamt</p></article>
+        <article class="interest-card"><p class="card-label" data-i18n="interests.albumLabel">Lieblingsalbum</p><h3>DAMN.</h3></article>
+        <article class="interest-card"><p class="card-label" data-i18n="interests.goalLabel">Nächstes großes Ziel</p><h3 data-i18n="interests.goalValue">Von Berlin nach Potsdam wandern</h3></article>
       </div>
-      <p class="section-intro">Websites von Freunden und Leuten, mit denen ich mich über Technik und eigene Projekte austausche.</p>
+      <div class="currently">
+        <div class="currently-heading"><span class="status-dot"></span><h3 data-i18n="currently.heading">Aktuell</h3></div>
+        <div class="currently-grid">
+          <p data-i18n="currently.language">Ich lerne gerade Niederländisch und Portugiesisch.</p>
+          <p data-i18n="currently.projects">Ich arbeite gerade an meiner Website und größeren Projekten.</p>
+          <p data-i18n="currently.school">Ich denke gerade über Schule und die nächsten Schritte nach.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="friends" class="section">
+      <div class="section-heading"><h2 data-i18n="network.heading">Netzwerk</h2></div>
+      <p class="section-intro" data-i18n="network.intro">Websites von Freunden und Leuten, mit denen ich mich über Technik und eigene Projekte austausche.</p>
       <div class="friend-grid">
-        <a class="friend-card" href="https://filiproessner.github.io/Personal-Website/" target="_blank" rel="noopener"><span>FR</span><div><h3>Filip Roessner</h3><p>Personal Website</p></div><b>↗</b></a>
-        <a class="friend-card" href="https://www.timhongphuc.de/" target="_blank" rel="noopener"><span>TH</span><div><h3>Tim Hong Phuc</h3><p>Personal Website</p></div><b>↗</b></a>
-        <a class="friend-card" href="https://karl-grehn.vercel.app/" target="_blank" rel="noopener"><span>KG</span><div><h3>Karl Grehn</h3><p>Personal Website</p></div><b>↗</b></a>
+        <a class="friend-card" href="https://filiproessner.github.io/Personal-Website/" target="_blank" rel="noopener"><span>FR</span><div><h3>Filip Roessner</h3><p data-i18n="network.website">Personal Website</p></div><b>↗</b></a>
+        <a class="friend-card" href="https://www.timhongphuc.de/" target="_blank" rel="noopener"><span>TH</span><div><h3>Tim Hong Phuc</h3><p data-i18n="network.website">Personal Website</p></div><b>↗</b></a>
+        <a class="friend-card" href="https://karl-grehn.vercel.app/" target="_blank" rel="noopener"><span>KG</span><div><h3>Karl Grehn</h3><p data-i18n="network.website">Personal Website</p></div><b>↗</b></a>
       </div>
     </section>
 
     <section id="contact" class="contact">
-      <p class="eyebrow">07 · CONTACT</p>
-      <h2>Let's build something.</h2>
-      <p>Du findest mich auf GitHub und kannst dort meine Projekte verfolgen.</p>
-      <a class="button primary" href="https://github.com/MackRichard" target="_blank" rel="noopener">github.com/MackRichard ↗</a>
+      <p class="eyebrow" data-i18n="contact.eyebrow">KONTAKT</p>
+      <h2 data-i18n="contact.heading">Lass uns in Kontakt bleiben.</h2>
+      <p data-i18n="contact.description">Du findest mich auf GitHub und kannst dort meine Projekte verfolgen.</p>
+      <div class="contact-links">
+        <a class="button primary" href="https://github.com/MackRichard" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/DEIN-LINKEDIN-PROFIL/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="button secondary" href="https://www.instagram.com/DEIN-INSTAGRAM-NAME/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
     </section>
   </main>
 
   <footer>
     <span>Richard Mack</span>
     <span>Berlin · 2026</span>
-    <a href="#home">Nach oben ↑</a>
+    <a href="#home" data-i18n="footer.top">Nach oben ↑</a>
   </footer>
   <script src="script.js"></script>
 </body>
