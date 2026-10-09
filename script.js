@@ -162,8 +162,24 @@ languageToggle?.addEventListener('click', () => {
   const ob=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');ob.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -25px 0px'});
   items.forEach(el=>ob.observe(el));
  } else items.forEach(el=>el.classList.add('is-visible'));
- document.querySelectorAll('.confetti-button').forEach(btn=>btn.addEventListener('click',()=>{
-  const card=btn.parentElement; const colors=['#78A9FF','#ffbd59','#ff6b9d','#8be9a8','#c7a4ff'];
-  for(let i=0;i<36;i++){const p=document.createElement('span');p.className='confetti-piece';p.style.left=(45+Math.random()*10)+'%';p.style.top='24px';p.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];p.style.setProperty('--dx',((Math.random()-.5)*240)+'px');p.style.setProperty('--dy',(80+Math.random()*160)+'px');p.style.setProperty('--rot',(Math.random()*720-360)+'deg');card.appendChild(p);setTimeout(()=>p.remove(),1100);}
- }));
 })();
+
+// Delegated confetti handler for all three celebration buttons.
+document.addEventListener('click', function(event) {
+  const btn = event.target.closest('.confetti-button');
+  if (!btn) return;
+  const card = btn.closest('.streak-wrap, .interest-card') || btn.parentElement;
+  const colors = ['#78A9FF', '#ffbd59', '#ff6b9d', '#8be9a8', '#c7a4ff'];
+  for (let i = 0; i < 42; i++) {
+    const piece = document.createElement('span');
+    piece.className = 'confetti-piece';
+    piece.style.left = `${46 + Math.random() * 8}%`;
+    piece.style.top = '28px';
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.setProperty('--dx', `${(Math.random() - 0.5) * 260}px`);
+    piece.style.setProperty('--dy', `${70 + Math.random() * 170}px`);
+    piece.style.setProperty('--rot', `${Math.random() * 720 - 360}deg`);
+    card.appendChild(piece);
+    window.setTimeout(() => piece.remove(), 1150);
+  }
+});

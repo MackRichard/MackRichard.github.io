@@ -191,3 +191,30 @@ body.light .social-links a[href*="github"], body.light .contact-links a[href*="g
 .footer-meta { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
 @media(max-width:640px) { .footer-meta {flex-direction:column;gap:4px;align-items:center} }
 @media(prefers-reduced-motion:reduce) { .reveal-on-scroll,.time-greeting {animation:none!important;transition:none!important} }
+
+/* Final contact button polish */
+#contact .contact-links a.button {
+  min-width: 132px;
+  min-height: 48px;
+  padding: 13px 19px;
+  border-radius: 13px;
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+}
+#contact .contact-links a.button.primary,
+body.light #contact .contact-links a.button.primary {
+  color: #f8faff;
+  background: linear-gradient(135deg, #30343d, #191b20);
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow: 0 8px 24px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.12);
+}
+#contact .contact-links a.button.primary:hover {
+  background: linear-gradient(135deg, #414752, #24272e);
+  border-color: rgba(255,255,255,.45);
+}
+.streak-wrap { position: relative; }
+.streak-wrap > .confetti-button { z-index: 3; }
+.interest-card { position: relative; padding-right: 58px; }
+.interest-card .confetti-button { z-index: 2; }
+.stream-time { margin-top: 8px; color: #ffbd59 !important; font-weight: 700; }
