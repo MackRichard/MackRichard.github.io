@@ -218,3 +218,111 @@ body.light #contact .contact-links a.button.primary {
 .interest-card { position: relative; padding-right: 58px; }
 .interest-card .confetti-button { z-index: 2; }
 .stream-time { margin-top: 8px; color: #ffbd59 !important; font-weight: 700; }
+
+
+/* v8 refinements: expressive greeting, fewer boxed surfaces, cleaner timeline */
+.time-greeting {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  color: transparent;
+  background: linear-gradient(95deg, #78A9FF 0%, #9B8CFF 52%, #C09BFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 650;
+  letter-spacing: -.015em;
+}
+
+/* Keep cards primarily for projects; make other sections lighter and more editorial. */
+.facts {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  gap: 8px 24px;
+}
+.facts div {
+  background: transparent;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.facts strong { font-size: 25px; }
+
+.timeline-card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 14px 0;
+}
+.timeline-card:before { display: none !important; }
+.timeline-item { margin-bottom: 25px; }
+.timeline:before { opacity: .6; }
+
+.language-grid { gap: 0 30px; }
+.language {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 20px 0;
+}
+.flag {
+  background: transparent;
+  border-color: var(--line);
+}
+
+/* Interest highlights use spacing and dividers instead of a grid of bordered boxes. */
+.interest-grid { gap: 0 28px; }
+.interest-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  min-height: 0;
+  padding: 24px 48px 24px 0;
+}
+.interest-card h3 { margin-top: 8px; }
+.streak-wrap { margin-bottom: 24px; }
+.achievement-card {
+  background: rgba(120,169,255,.055);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.currently-grid { gap: 0 28px; }
+.currently-grid p {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 17px 0;
+}
+
+.friend-grid { gap: 0 28px; }
+.friend-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 18px 4px;
+  box-shadow: none;
+}
+.friend-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: transparent;
+}
+.friend-card > span { background: transparent; border: 1px solid var(--line); }
+
+.stream-time {
+  font-weight: 400 !important;
+  letter-spacing: 0;
+}
+
+body.light .achievement-card { background: rgba(61,112,209,.045); }
+@media (max-width: 700px) {
+  .facts { gap: 4px 18px; }
+  .timeline-card { padding: 10px 0; }
+  .interest-card { padding: 20px 42px 20px 0; }
+  .friend-card { padding: 16px 2px; }
+}
