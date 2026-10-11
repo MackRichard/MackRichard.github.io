@@ -180,6 +180,7 @@ const TEXTS = {
 
     "contact.title": "Kontakt",
     "contact.text": "Du erreichst mich per E-Mail und findest mich auf GitHub, LinkedIn und Instagram.",
+    "contact.anon": "Auf der Kontaktseite kannst du mir außerdem anonym eine Nachricht schicken: ohne Name, ohne E-Mail-Adresse, direkt in mein Postfach.",
     "contact.cta": "Zur Kontaktseite",
 
     "cp.title": "Kontakt",
@@ -356,6 +357,7 @@ const TEXTS = {
 
     "contact.title": "Contact",
     "contact.text": "You can reach me by email and find me on GitHub, LinkedIn and Instagram.",
+    "contact.anon": "On the contact page you can also send me an anonymous message: no name, no email address, straight to my inbox.",
     "contact.cta": "Go to contact page",
 
     "cp.title": "Contact",
