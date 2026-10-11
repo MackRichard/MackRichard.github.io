@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
-  <script src="../script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="../">Richard Mack</a>
+    <a class="brand go" href="https://mackrichard.github.io/" data-i18n="c_home">Richard Mack</a>
     <div class="controls">
       <button id="lang-btn" type="button" aria-label="Sprache wechseln">EN</button>
       <button id="theme-btn" type="button" data-i18n="theme_dark">Dunkel</button>
@@ -22,15 +22,14 @@
   </header>
 
   <main class="contact-page">
-    <a class="back" href="../" data-i18n="c_back">Zurück zur Startseite</a>
     <h1 data-i18n="c_title">Kontakt</h1>
     <p class="intro" data-i18n="c_intro">Schreib mir oder schau auf meinen Profilen vorbei.</p>
-    <div class="stack">
-      <a class="card row go" href="https://github.com/MackRichard" target="_blank" rel="noopener"><b>GitHub</b><span>MackRichard</span></a>
-      <a class="card row go" href="https://www.linkedin.com/in/richard-mack-788407442/" target="_blank" rel="noopener"><b>LinkedIn</b><span>Richard Mack</span></a>
-      <a class="card row go" href="https://www.instagram.com/dein-benutzername/" target="_blank" rel="noopener"><b>Instagram</b><span>@dein-benutzername</span></a>
-      <a class="card row go" href="mailto:deine-email@example.com"><b data-i18n="c_mail">E-Mail</b><span>deine-email@example.com</span></a>
-    </div>
+    <ul class="rows">
+      <li><a class="row go" href="https://github.com/MackRichard" target="_blank" rel="noopener"><b>GitHub</b><span>MackRichard</span></a></li>
+      <li><a class="row go" href="https://www.linkedin.com/in/richard-mack-788407442/" target="_blank" rel="noopener"><b>LinkedIn</b><span>Richard Mack</span></a></li>
+      <li><a class="row go" href="https://www.instagram.com/dein-benutzername/" target="_blank" rel="noopener"><b>Instagram</b><span>@dein-benutzername</span></a></li>
+      <li><a class="row go" href="mailto:deine-email@example.com"><b data-i18n="c_mail">E-Mail</b><span>deine-email@example.com</span></a></li>
+    </ul>
   </main>
   <footer>
     <span>&copy; 2026 Richard Mack</span>
