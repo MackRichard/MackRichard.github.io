@@ -45,7 +45,44 @@
   <main id="main" class="contact-page">
     <div class="wrap">
       <h1 class="page-title" data-i18n="cp.title">Kontakt</h1>
-      <p class="prose" data-i18n="cp.lead">Hier findest du mich. Am besten erreichst du mich per E-Mail.</p>
+      <p class="prose" data-i18n="cp.lead">Schreib mir anonym eine Nachricht oder erreiche mich über einen der Wege weiter unten.</p>
+
+      <!-- Anonyme Nachricht über Web3Forms -->
+      <section class="msg-panel" aria-labelledby="msg-h">
+        <h2 id="msg-h" data-i18n="msg.title">Anonyme Nachricht</h2>
+        <p class="msg-sub" data-i18n="msg.sub">Etwas, das du mir schon immer sagen wolltest? Schreib es einfach auf.</p>
+
+        <ul class="msg-feats">
+          <li><strong data-i18n="msg.f1.t">Anonym</strong><span data-i18n="msg.f1.d">Kein Name, keine E-Mail-Adresse, keine Anmeldung.</span></li>
+          <li><strong data-i18n="msg.f2.t">Direkt</strong><span data-i18n="msg.f2.d">Deine Nachricht landet sofort in meinem Postfach.</span></li>
+          <li><strong data-i18n="msg.f3.t">Einfach</strong><span data-i18n="msg.f3.d">Text schreiben, absenden, fertig. Das dauert eine halbe Minute.</span></li>
+        </ul>
+
+        <form id="anon-form" novalidate>
+          <!-- TODO: Den Platzhalter unten durch deinen Web3Forms-Access-Key ersetzen
+               (kostenlos auf https://web3forms.com, dort trägst du deine E-Mail-Adresse ein
+               und bekommst den Key per Mail). Die E-Mail-Adresse selbst steht NICHT im Code. -->
+          <input type="hidden" name="access_key" value="DEIN_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="Anonyme Nachricht von deiner Website">
+          <input type="hidden" name="from_name" value="Anonymer Besucher">
+          <!-- Spam-Falle: Menschen sehen dieses Feld nicht, Bots füllen es aus -->
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+          <label for="msg-text" data-i18n="msg.label">Deine Nachricht</label>
+          <textarea id="msg-text" name="message" rows="6" maxlength="2000" placeholder="Schreib hier, was du mir sagen möchtest …" data-i18n-placeholder="msg.ph"></textarea>
+
+          <div class="msg-foot">
+            <span class="msg-count" id="msg-count">0 / 2000</span>
+            <button type="submit" class="btn btn-primary" id="msg-send" data-i18n="msg.send">Anonym absenden</button>
+          </div>
+
+          <p class="msg-status" id="msg-status" role="status" aria-live="polite"></p>
+          <p class="msg-small" data-i18n="msg.reply">Ich kann dir nicht antworten, weil ich nicht weiß, wer du bist. Wenn du eine Antwort möchtest, schreib in die Nachricht, wie ich dich erreiche.</p>
+          <p class="msg-small" data-i18n="msg.privacy">Technisch wird die Nachricht über den Dienst Web3Forms an mich weitergeleitet.</p>
+        </form>
+      </section>
+
+      <h2 class="other-title" data-i18n="cp.other">Weitere Wege</h2>
 
       <ul class="rows rows-links contact-list">
         <!-- TODO: Platzhalter durch deine echte E-Mail-Adresse ersetzen:

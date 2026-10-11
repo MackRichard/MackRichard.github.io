@@ -25,6 +25,7 @@
   /* Weltkarte: besuchte Länder schwarz */
   --map-off: #cfd3da;
   --map-on: #000000;
+  --danger: #b42318;
 
   --font: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
 
@@ -50,6 +51,7 @@
     --warm-2: #ff8a1f;
     --map-off: #3a3a3a;
     --map-on: #ececec;
+    --danger: #ff8a80;
     color-scheme: dark;
   }
 }
@@ -69,6 +71,7 @@
   --warm-2: #ff8a1f;
   --map-off: #3a3a3a;
   --map-on: #ececec;
+  --danger: #ff8a80;
   color-scheme: dark;
 }
 
@@ -651,8 +654,102 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   letter-spacing: -0.035em;
   margin-bottom: 1rem;
 }
-.contact-list { margin: 2rem 0 2rem; }
+.contact-list { margin: 1rem 0 2rem; }
 .contact-page .row-name { font-size: 1.3rem; }
+
+/* Anonyme Nachricht */
+.msg-panel {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem 0 0;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.msg-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--grad);
+}
+.msg-panel h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
+.msg-sub { color: var(--muted); max-width: 52ch; margin-bottom: 1.5rem; }
+
+.msg-feats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+.msg-feats li { display: grid; gap: 0.15rem; align-content: start; }
+.msg-feats strong { font-size: 1.05rem; }
+.msg-feats span { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+#anon-form label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+#msg-text {
+  display: block;
+  width: 100%;
+  min-height: 9rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font: inherit;
+  line-height: 1.55;
+  resize: vertical;
+}
+#msg-text::placeholder { color: var(--muted); opacity: 0.8; }
+#msg-text:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-color: transparent; }
+
+.hp { display: none; }
+.msg-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.msg-count { color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+#msg-send:disabled { opacity: 0.6; cursor: wait; }
+.msg-status { min-height: 1.5rem; margin: 0.9rem 0 0; font-weight: 600; }
+.msg-status.ok { color: var(--accent-2); }
+.msg-status.error { color: var(--danger); }
+.msg-small { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.875rem; max-width: 62ch; }
+
+.other-title { font-size: 1.3rem; font-weight: 700; margin-top: 3.5rem; }
+
+@media (max-width: 700px) {
+  .msg-feats { grid-template-columns: 1fr; }
+  .msg-panel { padding: 1.25rem; }
+}
+
+/* ---------- Knopf: nach oben ---------- */
+
+.to-top {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 40;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font: 600 1.2rem var(--font);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s, border-color 0.15s;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { border-color: var(--accent); }
 
 /* ---------- Fußzeile ---------- */
 

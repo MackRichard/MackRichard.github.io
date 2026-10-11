@@ -106,20 +106,6 @@ const TEXTS = {
     "hob.k6": "Aktuell am Lernen",
     "hob.k6.v": "Niederländisch und Portugiesisch",
 
-    "ce1.t": "Bundesjugendspiele: 1081 Punkte",
-    "ce2.t": "Teilnahme an Chemkids „Rundis Farblabor“",
-    "ce2.d": "24. Juni 2024",
-    "ce3.t": "Känguru-Wettbewerb: 67 Punkte",
-    "ce3.d": "Mai 2024",
-    "ce4.t": "Erfolgreiche Teilnahme an Chemkids „Rundis Zuckerlabor“",
-    "ce4.d": "23. Januar 2024",
-    "ce5.t": "Erfolgreiche Teilnahme an The BIG Challenge",
-    "ce6.t": "Bundesjugendspiele: 1080 Punkte",
-    "ce7.t": "3. Platz beim Informatik-Biber",
-    "ce8.t": "3. Platz beim Informatik-Biber",
-    "ce9.t": "Erfolgreiche Teilnahme am Matheathlon",
-    "ce9.d": "09. September 2021",
-    "ce10.t": "3. Platz beim Informatik-Biber",
     "cert.title": "Zertifikate",
     "c.dk": "Dänemark",
     "c.se": "Schweden",
@@ -151,6 +137,44 @@ const TEXTS = {
     "cp.copy": "Adresse kopieren",
     "cp.copied": "Kopiert",
     "cp.cancel": "Abbrechen",
+    "ce.mo": "Teilnahme an der Matheolympiade",
+    "ce.biber": "3. Platz beim Informatik-Biber",
+    "ce.bjs25": "Bundesjugendspiele: 1081 Punkte",
+    "ce.farb": "Teilnahme an Chemkids „Rundis Farblabor“",
+    "ce.farb.d": "24. Juni 2024",
+    "ce.kang": "Känguru-Wettbewerb: 67 Punkte",
+    "ce.kang.d": "Mai 2024",
+    "ce.zucker": "Erfolgreiche Teilnahme an Chemkids „Rundis Zuckerlabor“",
+    "ce.zucker.d": "23. Januar 2024",
+    "ce.big": "Erfolgreiche Teilnahme an The BIG Challenge",
+    "ce.bjs24": "Bundesjugendspiele: 1080 Punkte",
+    "ce.math": "Erfolgreiche Teilnahme am Matheathlon",
+    "ce.math.d": "09. September 2021",
+    "ui.top": "Nach oben",
+    "title.404": "404 – Seite nicht gefunden – Richard Mack",
+    "e404.lead": "Diese Seite gibt es nicht.",
+    "e404.text": "Wie bei Conways Game of Life: Hier ist keine Zelle mehr am Leben. Vielleicht hat sich ein Link geändert oder ein Tippfehler eingeschlichen.",
+    "e404.home": "Zur Startseite",
+    "e404.contact": "Zur Kontaktseite",
+    "cp.other": "Weitere Wege",
+    "msg.title": "Anonyme Nachricht",
+    "msg.sub": "Etwas, das du mir schon immer sagen wolltest? Schreib es einfach auf.",
+    "msg.f1.t": "Anonym",
+    "msg.f1.d": "Kein Name, keine E-Mail-Adresse, keine Anmeldung.",
+    "msg.f2.t": "Direkt",
+    "msg.f2.d": "Deine Nachricht landet sofort in meinem Postfach.",
+    "msg.f3.t": "Einfach",
+    "msg.f3.d": "Text schreiben, absenden, fertig. Das dauert eine halbe Minute.",
+    "msg.label": "Deine Nachricht",
+    "msg.ph": "Schreib hier, was du mir sagen möchtest …",
+    "msg.send": "Anonym absenden",
+    "msg.sending": "Wird gesendet …",
+    "msg.ok": "Danke! Deine Nachricht ist bei mir angekommen.",
+    "msg.empty": "Bitte schreib zuerst eine Nachricht.",
+    "msg.err": "Das hat leider nicht geklappt. Versuch es später noch einmal oder schreib mir per E-Mail.",
+    "msg.setup": "Das Formular ist noch nicht eingerichtet.",
+    "msg.reply": "Ich kann dir nicht antworten, weil ich nicht weiß, wer du bist. Wenn du eine Antwort möchtest, schreib in die Nachricht, wie ich dich erreiche.",
+    "msg.privacy": "Technisch wird die Nachricht über den Dienst Web3Forms an mich weitergeleitet.",
     "friends.title": "Freunde",
     "friends.intro": "Persönliche Websites meiner Freunde. Schau gern vorbei.",
 
@@ -159,7 +183,7 @@ const TEXTS = {
     "contact.cta": "Zur Kontaktseite",
 
     "cp.title": "Kontakt",
-    "cp.lead": "Hier findest du mich. Am besten erreichst du mich per E-Mail.",
+    "cp.lead": "Schreib mir anonym eine Nachricht oder erreiche mich über einen der Wege weiter unten.",
     "cp.email": "E-Mail",
     "cp.back": "Zurück zur Startseite"
   },
@@ -258,20 +282,6 @@ const TEXTS = {
     "hob.k6": "Currently learning",
     "hob.k6.v": "Dutch and Portuguese",
 
-    "ce1.t": "Bundesjugendspiele: 1081 points",
-    "ce2.t": "Participation in Chemkids “Rundis Farblabor”",
-    "ce2.d": "June 24, 2024",
-    "ce3.t": "Känguru competition: 67 points",
-    "ce3.d": "May 2024",
-    "ce4.t": "Successful participation in Chemkids “Rundis Zuckerlabor”",
-    "ce4.d": "January 23, 2024",
-    "ce5.t": "Successful participation in The BIG Challenge",
-    "ce6.t": "Bundesjugendspiele: 1080 points",
-    "ce7.t": "3rd place at the Informatik-Biber",
-    "ce8.t": "3rd place at the Informatik-Biber",
-    "ce9.t": "Successful participation in the Matheathlon",
-    "ce9.d": "September 9, 2021",
-    "ce10.t": "3rd place at the Informatik-Biber",
     "cert.title": "Certificates",
     "c.dk": "Denmark",
     "c.se": "Sweden",
@@ -303,6 +313,44 @@ const TEXTS = {
     "cp.copy": "Copy address",
     "cp.copied": "Copied",
     "cp.cancel": "Cancel",
+    "ce.mo": "Participation in the Mathematics Olympiad",
+    "ce.biber": "3rd place at the Informatik-Biber",
+    "ce.bjs25": "Bundesjugendspiele: 1081 points",
+    "ce.farb": "Participation in Chemkids “Rundis Farblabor”",
+    "ce.farb.d": "June 24, 2024",
+    "ce.kang": "Känguru competition: 67 points",
+    "ce.kang.d": "May 2024",
+    "ce.zucker": "Successful participation in Chemkids “Rundis Zuckerlabor”",
+    "ce.zucker.d": "January 23, 2024",
+    "ce.big": "Successful participation in The BIG Challenge",
+    "ce.bjs24": "Bundesjugendspiele: 1080 points",
+    "ce.math": "Successful participation in the Matheathlon",
+    "ce.math.d": "September 9, 2021",
+    "ui.top": "Back to top",
+    "title.404": "404 – Page not found – Richard Mack",
+    "e404.lead": "This page does not exist.",
+    "e404.text": "Just like in Conway's Game of Life: no cell is alive here anymore. Maybe a link has changed or a typo slipped in.",
+    "e404.home": "Go to home page",
+    "e404.contact": "Go to contact page",
+    "cp.other": "Other ways",
+    "msg.title": "Anonymous message",
+    "msg.sub": "Something you always wanted to tell me? Just write it down.",
+    "msg.f1.t": "Anonymous",
+    "msg.f1.d": "No name, no email address, no sign-up.",
+    "msg.f2.t": "Direct",
+    "msg.f2.d": "Your message lands straight in my inbox.",
+    "msg.f3.t": "Easy",
+    "msg.f3.d": "Write, send, done. It takes half a minute.",
+    "msg.label": "Your message",
+    "msg.ph": "Write what you want to tell me here …",
+    "msg.send": "Send anonymously",
+    "msg.sending": "Sending …",
+    "msg.ok": "Thank you! Your message has reached me.",
+    "msg.empty": "Please write a message first.",
+    "msg.err": "That did not work, unfortunately. Please try again later or write to me by email.",
+    "msg.setup": "The form is not set up yet.",
+    "msg.reply": "I cannot reply, because I do not know who you are. If you would like an answer, include in your message how I can reach you.",
+    "msg.privacy": "Technically, the message is forwarded to me through the service Web3Forms.",
     "friends.title": "Friends",
     "friends.intro": "Personal websites of my friends. Feel free to take a look.",
 
@@ -311,7 +359,7 @@ const TEXTS = {
     "contact.cta": "Go to contact page",
 
     "cp.title": "Contact",
-    "cp.lead": "Here is where you can find me. Email is the best way to reach me.",
+    "cp.lead": "Send me an anonymous message or reach me in one of the ways further down.",
     "cp.email": "Email",
     "cp.back": "Back to home page"
   }
@@ -338,12 +386,16 @@ function applyLanguage(lang) {
     const value = dict[el.dataset.i18nLabel];
     if (value !== undefined) el.setAttribute("aria-label", value);
   });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+    const value = dict[el.dataset.i18nPlaceholder];
+    if (value !== undefined) el.setAttribute("placeholder", value);
+  });
   document.querySelectorAll(".lang-ctl [data-l]").forEach(function (el) {
     el.classList.toggle("on", el.dataset.l === lang);
   });
 
   writeStorage("lang", lang);
-  if (window.onLangChange) window.onLangChange();
+  (window.langHooks || []).forEach(function (fn) { fn(); });
 }
 
 function initialLanguage() {
@@ -685,6 +737,112 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
     if (e.key === "Escape") { closePanel(); btn.focus(); }
   });
 
-  window.onLangChange = refresh;
+  (window.langHooks = window.langHooks || []).push(refresh);
   refresh();
+})();
+
+/* ---------- 9. Duolingo-Streak zählt automatisch weiter ---------- */
+
+(function duolingoStreak() {
+  const el = document.getElementById("streak");
+  if (!el) return;
+  // data-start = Tag 1 der Serie (JJJJ-MM-TT). Tage werden nach Berliner Zeit gezählt.
+  const p = el.dataset.start.split("-").map(Number);
+  const startUTC = Date.UTC(p[0], p[1] - 1, p[2]);
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Berlin", year: "numeric", month: "2-digit", day: "2-digit"
+  }).formatToParts(new Date());
+  function part(type) { return Number(parts.find(function (x) { return x.type === type; }).value); }
+  const todayUTC = Date.UTC(part("year"), part("month") - 1, part("day"));
+  const days = Math.round((todayUTC - startUTC) / 86400000) + 1;
+  if (days > 0) el.textContent = String(days);
+})();
+
+/* ---------- 10. Knopf: nach oben ---------- */
+
+(function backToTop() {
+  const btn = document.getElementById("to-top");
+  if (!btn) return;
+  function update() { btn.classList.toggle("show", window.scrollY > 600); }
+  window.addEventListener("scroll", update, { passive: true });
+  btn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  update();
+})();
+
+/* ---------- 11. Anonyme Nachricht (Web3Forms) ---------- */
+
+(function anonymousMessage() {
+  const form = document.getElementById("anon-form");
+  if (!form) return;
+  const area = document.getElementById("msg-text");
+  const count = document.getElementById("msg-count");
+  const send = document.getElementById("msg-send");
+  const status = document.getElementById("msg-status");
+  let state = null;
+
+  function t(key) { return TEXTS[currentLang][key]; }
+
+  function renderStatus() {
+    status.textContent = state ? t(state.key) : "";
+    status.className = "msg-status" + (state ? " " + state.kind : "");
+  }
+  function setState(key, kind) {
+    state = key ? { key: key, kind: kind } : null;
+    renderStatus();
+  }
+  function updateCount() { count.textContent = area.value.length + " / " + area.maxLength; }
+
+  area.addEventListener("input", function () {
+    updateCount();
+    if (state) setState(null);
+  });
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const text = area.value.trim();
+    if (text.length < 3) { setState("msg.empty", "error"); area.focus(); return; }
+
+    const data = {};
+    new FormData(form).forEach(function (value, key) { data[key] = value; });
+    data.message = text;
+
+    // Honeypot: Ein Bot füllt das versteckte Feld aus. Dann so tun, als wäre alles gut.
+    if (data.botcheck) { area.value = ""; updateCount(); setState("msg.ok", "ok"); return; }
+
+    // Solange der Platzhalter noch drin steht, wird nichts gesendet
+    if (!data.access_key || data.access_key.indexOf("DEIN_") === 0) {
+      setState("msg.setup", "error");
+      return;
+    }
+
+    send.disabled = true;
+    send.textContent = t("msg.sending");
+    setState(null);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (res.ok && json.success) {
+        area.value = "";
+        updateCount();
+        setState("msg.ok", "ok");
+      } else {
+        setState("msg.err", "error");
+      }
+    } catch (err) {
+      setState("msg.err", "error");
+    }
+    send.disabled = false;
+    send.textContent = t("msg.send");
+  });
+
+  (window.langHooks = window.langHooks || []).push(function () {
+    renderStatus();
+    if (!send.disabled) send.textContent = t("msg.send");
+  });
 })();
