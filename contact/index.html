@@ -48,13 +48,28 @@
       <p class="prose" data-i18n="cp.lead">Hier findest du mich. Am besten erreichst du mich per E-Mail.</p>
 
       <ul class="rows rows-links contact-list">
-        <!-- TODO: Platzhalter durch deine echte E-Mail-Adresse ersetzen -->
-        <li><a class="go" href="mailto:deine-email@example.com"><span class="row-name" data-i18n="cp.email">E-Mail</span><span class="row-meta">deine-email@example.com</span></a></li>
+        <!-- TODO: Platzhalter durch deine echte E-Mail-Adresse ersetzen:
+             data-user = Teil vor dem @, data-domain = Teil nach dem @ -->
+        <li>
+          <button type="button" class="row-btn go" id="email-btn" aria-controls="email-confirm" aria-expanded="false" data-user="deine-email" data-domain="example.com">
+            <span class="row-name" data-i18n="cp.email">E-Mail</span>
+            <span class="row-meta"><span id="email-text" class="blur" aria-hidden="false">xxxxxxxxxxxx@xxxxxxx.xxx</span></span>
+          </button>
+          <div class="confirm" id="email-confirm" role="group" aria-labelledby="email-confirm-q" hidden>
+            <p id="email-confirm-q"></p>
+            <div class="confirm-actions">
+              <button type="button" class="btn btn-primary" id="email-open" data-i18n="cp.open">E-Mail-Programm öffnen</button>
+              <button type="button" class="btn" id="email-copy" data-i18n="cp.copy">Adresse kopieren</button>
+              <button type="button" class="btn" id="email-cancel" data-i18n="cp.cancel">Abbrechen</button>
+            </div>
+          </div>
+        </li>
         <li><a class="go" href="https://github.com/MackRichard" target="_blank" rel="noopener noreferrer"><span class="row-name">GitHub</span><span class="row-meta">github.com/MackRichard</span></a></li>
         <li><a class="go" href="https://www.linkedin.com/in/richard-mack-788407442/" target="_blank" rel="noopener noreferrer"><span class="row-name">LinkedIn</span><span class="row-meta">linkedin.com/in/richard-mack-788407442</span></a></li>
         <!-- TODO: Platzhalter durch deinen echten Instagram-Link ersetzen -->
         <li><a class="go" href="https://www.instagram.com/dein_benutzername" target="_blank" rel="noopener noreferrer"><span class="row-name">Instagram</span><span class="row-meta">instagram.com/dein_benutzername</span></a></li>
       </ul>
+      <p class="note" id="email-note"></p>
 
       <p><a class="text-link go" href="https://mackrichard.github.io/" data-i18n="cp.back">Zurück zur Startseite</a></p>
     </div>
@@ -63,7 +78,7 @@
   <footer class="site-footer">
     <div class="wrap foot">
       <p>© 2026 Richard Mack</p>
-      <p>Berlin, Germany (CET / CEST)</p>
+      <p>Berlin, Germany (CET / CEST)<time id="clock" class="clock"></time></p>
     </div>
   </footer>
 

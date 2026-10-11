@@ -22,6 +22,10 @@
   --warm-1: #c98a00;
   --warm-2: #d9520a;
 
+  /* Weltkarte: besuchte Länder schwarz */
+  --map-off: #cfd3da;
+  --map-on: #000000;
+
   --font: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
 
   --header-h: 64px;
@@ -44,6 +48,8 @@
     --life: rgba(143, 166, 255, 0.3);
     --warm-1: #ffd23f;
     --warm-2: #ff8a1f;
+    --map-off: #3a3a3a;
+    --map-on: #ececec;
     color-scheme: dark;
   }
 }
@@ -61,6 +67,8 @@
   --life: rgba(143, 166, 255, 0.3);
   --warm-1: #ffd23f;
   --warm-2: #ff8a1f;
+  --map-off: #3a3a3a;
+  --map-on: #ececec;
   color-scheme: dark;
 }
 
@@ -443,15 +451,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .fold > summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.9rem 1.1rem;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  font-weight: 600;
   cursor: pointer;
   list-style: none;
   transition: border-color 0.15s;
@@ -460,22 +466,81 @@ a { color: inherit; text-decoration: none; }
 .fold > summary:hover { border-color: var(--accent); }
 .fold > summary::after {
   content: "";
-  flex: none;
-  width: 0.55rem;
-  height: 0.55rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
   transition: transform 0.2s;
 }
 .fold[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
-.fold:not([open]) .lbl-open,
-.fold[open] .lbl-closed { display: none; }
 
 .fold .facts { margin-top: 1.25rem; }
 .facts.wide > div { grid-template-columns: 12.5rem 1fr; }
-.facts .sub { display: block; font-weight: 400; color: var(--muted); }
+.sub { display: block; font-weight: 400; color: var(--muted); }
 .inline-link { margin-left: 1rem; font-size: 0.95rem; white-space: nowrap; }
+
+/* Besuchte Länder */
+.visited { margin-top: 2.25rem; }
+.visited h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+.visit-count { color: var(--muted); margin-bottom: 1rem; }
+
+.map-box {
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.map-tabs {
+  display: inline-flex;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.map-tab {
+  padding: 0.35rem 0.9rem;
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+  font: 600 0.85rem var(--font);
+  cursor: pointer;
+}
+.map-tab[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+#map { display: block; width: 100%; height: auto; max-height: 460px; }
+#map path {
+  fill-rule: evenodd;
+  stroke: var(--surface);
+  stroke-width: 0.5px;
+  vector-effect: non-scaling-stroke;
+}
+#map .land { fill: var(--map-off); }
+#map .seen { fill: var(--map-on); }
+
+.regions { margin: 0; border-top: 1px solid var(--line); }
+.regions > div {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 0.5rem 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.regions dt { color: var(--muted); }
+.regions dd { margin: 0; }
+
+/* Zertifikate */
+.certs { border-top: 1px solid var(--line); }
+.certs > li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 0.5rem 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.certs .year { font-size: 1.2rem; font-weight: 700; }
+.cert-items li { padding: 0.4rem 0; }
+.cert-title { margin: 0; font-weight: 500; }
 
 /* Mein Weg */
 .timeline {
@@ -530,7 +595,8 @@ a { color: inherit; text-decoration: none; }
 .row-meta { color: var(--muted); overflow-wrap: anywhere; }
 
 .rows-links > li { display: block; padding: 0; }
-.rows-links a {
+.rows-links a,
+.rows-links .row-btn {
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: baseline;
@@ -540,16 +606,43 @@ a { color: inherit; text-decoration: none; }
   border-radius: 6px;
   transition: background 0.15s;
 }
-.rows-links a::after { margin-left: 0; color: var(--accent); }
-.rows-links a:hover { background: var(--surface); }
+.rows-links a::after,
+.rows-links .row-btn::after { margin-left: 0; color: var(--accent); }
+.rows-links a:hover,
+.rows-links .row-btn:hover { background: var(--surface); }
 
 @media (max-width: 600px) {
-  .rows-links a { grid-template-columns: 1fr auto; }
+  .rows-links a,
+  .rows-links .row-btn { grid-template-columns: 1fr auto; }
   .rows-links .row-meta { grid-column: 1; grid-row: 2; }
-  .rows-links a::after { grid-column: 2; grid-row: 1; }
+  .rows-links a::after,
+  .rows-links .row-btn::after { grid-column: 2; grid-row: 1; }
 }
 
 /* ---------- Kontaktseite ---------- */
+
+.row-btn {
+  width: 100%;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.blur { filter: blur(6px); user-select: none; transition: filter 0.2s; }
+.note { color: var(--muted); font-size: 0.9rem; max-width: 62ch; margin: 0 0 1.5rem; }
+.confirm {
+  margin: 0.25rem 0 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.confirm p { margin: 0 0 0.9rem; overflow-wrap: anywhere; }
+.confirm-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+button.btn { font: inherit; font-weight: 600; cursor: pointer; }
+
 
 .contact-page { padding: 4rem 0 5rem; min-height: calc(100svh - var(--header-h) - 80px); }
 .page-title {
@@ -576,10 +669,18 @@ a { color: inherit; text-decoration: none; }
   gap: 0.25rem 1.5rem;
 }
 .site-footer p { margin: 0; }
+.clock {
+  display: inline-block;
+  min-width: 4.6rem;
+  margin-left: 0.75rem;
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
 
 /* ---------- Kleine Bildschirme ---------- */
 
-@media (max-width: 860px) {
+@media (max-width: 1000px) {
   :root { --header-h: 108px; }
 
   .bar {
@@ -605,7 +706,9 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 520px) {
   .facts > div,
-  .facts.wide > div { grid-template-columns: 1fr; gap: 0; }
+  .facts.wide > div,
+  .regions > div,
+  .certs > li { grid-template-columns: 1fr; gap: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
