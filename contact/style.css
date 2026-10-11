@@ -18,6 +18,10 @@
   /* Farbverlauf von der Akzentfarbe bis Grün */
   --grad: linear-gradient(90deg, var(--accent), var(--accent-2));
 
+  /* Farbverlauf für Zahlen: gelb bis orange */
+  --warm-1: #c98a00;
+  --warm-2: #d9520a;
+
   --font: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
 
   --header-h: 64px;
@@ -38,6 +42,8 @@
     --accent-2: #5fe3a1;
     --accent-ink: #121212;
     --life: rgba(143, 166, 255, 0.3);
+    --warm-1: #ffd23f;
+    --warm-2: #ff8a1f;
     color-scheme: dark;
   }
 }
@@ -53,6 +59,8 @@
   --accent-2: #5fe3a1;
   --accent-ink: #121212;
   --life: rgba(143, 166, 255, 0.3);
+  --warm-1: #ffd23f;
+  --warm-2: #ff8a1f;
   color-scheme: dark;
 }
 
@@ -421,19 +429,53 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius);
   font-weight: 600;
 }
-.badge {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 6px;
-  background: var(--grad);
-  color: var(--accent-ink);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0;
+
+/* Hobbys & Errungenschaften */
+.num {
+  font-weight: 800;
+  font-size: 1.15em;
+  font-variant-numeric: tabular-nums;
+  color: var(--warm-2);
+  background: linear-gradient(90deg, var(--warm-1), var(--warm-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+.fold > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  transition: border-color 0.15s;
+}
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary:hover { border-color: var(--accent); }
+.fold > summary::after {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+.fold[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.fold:not([open]) .lbl-open,
+.fold[open] .lbl-closed { display: none; }
+
+.fold .facts { margin-top: 1.25rem; }
+.facts.wide > div { grid-template-columns: 12.5rem 1fr; }
+.facts .sub { display: block; font-weight: 400; color: var(--muted); }
+.inline-link { margin-left: 1rem; font-size: 0.95rem; white-space: nowrap; }
 
 /* Mein Weg */
 .timeline {
@@ -562,7 +604,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 520px) {
-  .facts > div { grid-template-columns: 1fr; gap: 0; }
+  .facts > div,
+  .facts.wide > div { grid-template-columns: 1fr; gap: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
