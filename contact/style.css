@@ -824,24 +824,17 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   .certs > li { grid-template-columns: 1fr; gap: 0; }
 }
 
-/* ---------- Scroll-Effekt: unscharf, dann scharf ---------- */
+/* ---------- Scroll-Effekt: nur Unschärfe, dann scharf ---------- */
 
 .reveal {
-  opacity: 0;
   filter: blur(12px);
-  transform: translateY(10px);
-  /* Verlassen des Bildschirms: schnell zurücksetzen */
-  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+  /* Verlassen des Bildschirms: schnell wieder unscharf */
+  transition: filter 0.3s ease;
 }
 .reveal.in {
-  opacity: 1;
   filter: none;
-  transform: none;
   /* Betreten des Bildschirms: ruhig scharf werden */
-  transition:
-    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms),
-    filter 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms),
-    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms);
+  transition: filter 0.9s ease-out var(--d, 0ms);
 }
 
 @media (prefers-reduced-motion: reduce) {

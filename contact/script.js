@@ -881,20 +881,21 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const selectors = [
-    ".hero-inner > *", ".section > h2", ".content > p", ".content > details",
+    ".hero-inner > *", ".section > h2", ".content > p",
     ".facts > div", ".projects > li", ".skills > div", ".timeline > li",
-    ".certs > li", ".rows > li"
+    ".certs > li", ".rows > li",
+    // Hobbys & Errungenschaften: Pfeil-Knopf und alles, was darin steckt
+    ".fold > summary", ".visited > h3", ".visit-count", ".map-box", ".regions > div"
   ];
 
   const items = [];
   selectors.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) {
-      if (el.closest(".fold")) return;             // Inhalt im Klappbereich bleibt unberührt
       if (items.indexOf(el) === -1) items.push(el);
     });
   });
 
-  // Geschwister erscheinen leicht versetzt, das wirkt ruhiger
+  // Geschwister werden leicht versetzt scharf, das wirkt ruhiger
   const seen = new Map();
   items.forEach(function (el) {
     const i = seen.get(el.parentElement) || 0;
@@ -911,4 +912,18 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
   }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
 
   items.forEach(function (el) { observer.observe(el); });
+
+  // Klappbereich: Beim Öffnen und Schließen wird der Effekt für den Inhalt neu gestartet,
+  // damit er auch beim erneuten Aufklappen wieder von unscharf zu scharf läuft.
+  const fold = document.querySelector(".fold");
+  if (fold) {
+    fold.addEventListener("toggle", function () {
+      items.forEach(function (el) {
+        if (!fold.contains(el) || el.tagName === "SUMMARY") return;
+        el.classList.remove("in");
+        observer.unobserve(el);
+        observer.observe(el);
+      });
+    });
+  }
 })();
