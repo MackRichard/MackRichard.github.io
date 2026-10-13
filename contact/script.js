@@ -182,8 +182,8 @@ const TEXTS = {
     "c.pe": "Peru",
     "c.us": "USA",
     "c.be": "Belgien",
-    "msg.contact.label": "Kontaktdaten (freiwillig)",
-    "msg.contact.ph": "Nur ausfüllen, wenn du eine Antwort möchtest",
+    "msg.contact.label": "Deine Kontaktdaten",
+    "msg.contact.ph": "optional",
     "friends.title": "Freunde",
     "friends.intro": "Persönliche Websites meiner Freunde. Schau gern vorbei.",
 
