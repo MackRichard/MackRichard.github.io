@@ -160,7 +160,7 @@ const TEXTS = {
     "msg.title": "Anonyme Nachricht",
     "msg.sub": "Etwas, das du mir schon immer sagen wolltest? Schreib es einfach auf.",
     "msg.f1.t": "Anonym",
-    "msg.f1.d": "Kein Name, keine E-Mail-Adresse, keine Anmeldung.",
+    "msg.f1.d": "Kein Name, keine E-Mail-Adresse, keine Anmeldung nötig. Kontaktdaten sind freiwillig.",
     "msg.f2.t": "Direkt",
     "msg.f2.d": "Deine Nachricht landet sofort in meinem Postfach.",
     "msg.f3.t": "Einfach",
@@ -173,7 +173,7 @@ const TEXTS = {
     "msg.empty": "Bitte schreib zuerst eine Nachricht.",
     "msg.err": "Das hat leider nicht geklappt. Versuch es später noch einmal oder schreib mir per E-Mail.",
     "msg.setup": "Das Formular ist noch nicht eingerichtet.",
-    "msg.reply": "Ich kann dir nicht antworten, weil ich nicht weiß, wer du bist. Wenn du eine Antwort möchtest, schreib in die Nachricht, wie ich dich erreiche.",
+    "msg.reply": "Ohne Kontaktdaten kann ich dir nicht antworten. Wenn du eine Antwort möchtest, trag oben ein, wie ich dich erreiche.",
     "msg.privacy": "Technisch wird die Nachricht über den Dienst Web3Forms an mich weitergeleitet.",
     "map.seen": "Besucht",
     "map.wish": "Wunschziele",
@@ -182,6 +182,8 @@ const TEXTS = {
     "c.pe": "Peru",
     "c.us": "USA",
     "c.be": "Belgien",
+    "msg.contact.label": "Kontaktdaten (freiwillig)",
+    "msg.contact.ph": "Nur ausfüllen, wenn du eine Antwort möchtest",
     "friends.title": "Freunde",
     "friends.intro": "Persönliche Websites meiner Freunde. Schau gern vorbei.",
 
@@ -344,7 +346,7 @@ const TEXTS = {
     "msg.title": "Anonymous message",
     "msg.sub": "Something you always wanted to tell me? Just write it down.",
     "msg.f1.t": "Anonymous",
-    "msg.f1.d": "No name, no email address, no sign-up.",
+    "msg.f1.d": "No name, no email address, no sign-up needed. Contact details are optional.",
     "msg.f2.t": "Direct",
     "msg.f2.d": "Your message lands straight in my inbox.",
     "msg.f3.t": "Easy",
@@ -357,7 +359,7 @@ const TEXTS = {
     "msg.empty": "Please write a message first.",
     "msg.err": "That did not work, unfortunately. Please try again later or write to me by email.",
     "msg.setup": "The form is not set up yet.",
-    "msg.reply": "I cannot reply, because I do not know who you are. If you would like an answer, include in your message how I can reach you.",
+    "msg.reply": "Without contact details I cannot reply. If you would like an answer, enter above how I can reach you.",
     "msg.privacy": "Technically, the message is forwarded to me through the service Web3Forms.",
     "map.seen": "Visited",
     "map.wish": "Wish list",
@@ -366,6 +368,8 @@ const TEXTS = {
     "c.pe": "Peru",
     "c.us": "USA",
     "c.be": "Belgium",
+    "msg.contact.label": "Contact details (optional)",
+    "msg.contact.ph": "Only fill this in if you would like a reply",
     "friends.title": "Friends",
     "friends.intro": "Personal websites of my friends. Feel free to take a look.",
 
@@ -803,6 +807,7 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
   const form = document.getElementById("anon-form");
   if (!form) return;
   const area = document.getElementById("msg-text");
+  const contactField = document.getElementById("msg-contact");
   const count = document.getElementById("msg-count");
   const send = document.getElementById("msg-send");
   const status = document.getElementById("msg-status");
@@ -833,9 +838,11 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
     const data = {};
     new FormData(form).forEach(function (value, key) { data[key] = value; });
     data.message = text;
+    const contact = (data.kontakt || "").trim();
+    if (contact) data.kontakt = contact; else delete data.kontakt;   // Feld ist freiwillig
 
     // Honeypot: Ein Bot füllt das versteckte Feld aus. Dann so tun, als wäre alles gut.
-    if (data.botcheck) { area.value = ""; updateCount(); setState("msg.ok", "ok"); return; }
+    if (data.botcheck) { area.value = ""; contactField.value = ""; updateCount(); setState("msg.ok", "ok"); return; }
 
     // Solange der Platzhalter noch drin steht, wird nichts gesendet
     if (!data.access_key || data.access_key.indexOf("DEIN_") === 0) {
@@ -855,6 +862,7 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
       const json = await res.json();
       if (res.ok && json.success) {
         area.value = "";
+        contactField.value = "";
         updateCount();
         setState("msg.ok", "ok");
       } else {
@@ -880,50 +888,20 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
   if (!("IntersectionObserver" in window)) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const selectors = [
-    ".hero-inner > *", ".section > h2", ".content > p",
-    ".facts > div", ".projects > li", ".skills > div", ".timeline > li",
-    ".certs > li", ".rows > li",
-    // Hobbys & Errungenschaften: Pfeil-Knopf und alles, was darin steckt
-    ".fold > summary", ".visited > h3", ".visit-count", ".map-box", ".regions > div"
-  ];
+  // Ganze Blöcke statt einzelner Zeilen: wirkt ruhiger und aus einem Guss
+  const items = Array.prototype.slice.call(
+    document.querySelectorAll(".hero-inner, .section > h2, .section > .content")
+  );
+  items.forEach(function (el) { el.classList.add("reveal"); });
 
-  const items = [];
-  selectors.forEach(function (sel) {
-    document.querySelectorAll(sel).forEach(function (el) {
-      if (items.indexOf(el) === -1) items.push(el);
-    });
-  });
-
-  // Geschwister werden leicht versetzt scharf, das wirkt ruhiger
-  const seen = new Map();
-  items.forEach(function (el) {
-    const i = seen.get(el.parentElement) || 0;
-    seen.set(el.parentElement, i + 1);
-    el.style.setProperty("--d", Math.min(i, 5) * 70 + "ms");
-    el.classList.add("reveal");
-  });
-
-  // Beim Betreten wird scharf, beim Verlassen (nach oben oder unten) wieder unscharf
+  // Scharf, sobald ein Teil des Blocks im Bild ist. Unscharf erst, wenn er ganz draußen ist
+  // (nach oben oder nach unten), damit der Effekt beim Zurückscrollen erneut läuft.
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      entry.target.classList.toggle("in", entry.isIntersecting);
+      if (!entry.isIntersecting || entry.intersectionRatio === 0) entry.target.classList.remove("in");
+      else if (entry.intersectionRatio >= 0.12) entry.target.classList.add("in");
     });
-  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  }, { threshold: [0, 0.12], rootMargin: "0px 0px -6% 0px" });
 
   items.forEach(function (el) { observer.observe(el); });
-
-  // Klappbereich: Beim Öffnen und Schließen wird der Effekt für den Inhalt neu gestartet,
-  // damit er auch beim erneuten Aufklappen wieder von unscharf zu scharf läuft.
-  const fold = document.querySelector(".fold");
-  if (fold) {
-    fold.addEventListener("toggle", function () {
-      items.forEach(function (el) {
-        if (!fold.contains(el) || el.tagName === "SUMMARY") return;
-        el.classList.remove("in");
-        observer.unobserve(el);
-        observer.observe(el);
-      });
-    });
-  }
 })();

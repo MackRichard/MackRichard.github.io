@@ -704,10 +704,10 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 .msg-feats span { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
 
 #anon-form label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
-#msg-text {
+#msg-text,
+#msg-contact {
   display: block;
   width: 100%;
-  min-height: 6.5rem;
   padding: 0.8rem 0.9rem;
   background: var(--bg);
   color: var(--ink);
@@ -715,10 +715,13 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   border-radius: var(--radius);
   font: inherit;
   line-height: 1.55;
-  resize: vertical;
 }
-#msg-text::placeholder { color: var(--muted); opacity: 0.8; }
-#msg-text:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-color: transparent; }
+#msg-text { min-height: 6.5rem; resize: vertical; }
+#msg-text::placeholder,
+#msg-contact::placeholder { color: var(--muted); opacity: 0.8; }
+#msg-text:focus-visible,
+#msg-contact:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-color: transparent; }
+.msg-field { margin-bottom: 1.1rem; }
 
 .hp { display: none; }
 .msg-foot {
@@ -827,15 +830,10 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 /* ---------- Scroll-Effekt: nur Unschärfe, dann scharf ---------- */
 
 .reveal {
-  filter: blur(12px);
-  /* Verlassen des Bildschirms: schnell wieder unscharf */
+  filter: blur(10px);
   transition: filter 0.3s ease;
 }
-.reveal.in {
-  filter: none;
-  /* Betreten des Bildschirms: ruhig scharf werden */
-  transition: filter 0.9s ease-out var(--d, 0ms);
-}
+.reveal.in { filter: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

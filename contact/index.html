@@ -53,7 +53,7 @@
         <p class="msg-sub" data-i18n="msg.sub">Etwas, das du mir schon immer sagen wolltest? Schreib es einfach auf.</p>
 
         <ul class="msg-feats">
-          <li><strong data-i18n="msg.f1.t">Anonym</strong><span data-i18n="msg.f1.d">Kein Name, keine E-Mail-Adresse, keine Anmeldung.</span></li>
+          <li><strong data-i18n="msg.f1.t">Anonym</strong><span data-i18n="msg.f1.d">Kein Name, keine E-Mail-Adresse, keine Anmeldung nötig. Kontaktdaten sind freiwillig.</span></li>
           <li><strong data-i18n="msg.f2.t">Direkt</strong><span data-i18n="msg.f2.d">Deine Nachricht landet sofort in meinem Postfach.</span></li>
           <li><strong data-i18n="msg.f3.t">Einfach</strong><span data-i18n="msg.f3.d">Text schreiben, absenden, fertig. Das dauert eine halbe Minute.</span></li>
         </ul>
@@ -68,6 +68,11 @@
           <!-- Spam-Falle: Menschen sehen dieses Feld nicht, Bots füllen es aus -->
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
 
+          <div class="msg-field">
+            <label for="msg-contact" data-i18n="msg.contact.label">Kontaktdaten (freiwillig)</label>
+            <input type="text" id="msg-contact" name="kontakt" maxlength="100" autocomplete="off" spellcheck="false" placeholder="Nur ausfüllen, wenn du eine Antwort möchtest" data-i18n-placeholder="msg.contact.ph">
+          </div>
+
           <label for="msg-text" data-i18n="msg.label">Deine Nachricht</label>
           <textarea id="msg-text" name="message" rows="3" maxlength="100" placeholder="Schreib hier, was du mir sagen möchtest …" data-i18n-placeholder="msg.ph"></textarea>
 
@@ -77,7 +82,7 @@
           </div>
 
           <p class="msg-status" id="msg-status" role="status" aria-live="polite"></p>
-          <p class="msg-small" data-i18n="msg.reply">Ich kann dir nicht antworten, weil ich nicht weiß, wer du bist. Wenn du eine Antwort möchtest, schreib in die Nachricht, wie ich dich erreiche.</p>
+          <p class="msg-small" data-i18n="msg.reply">Ohne Kontaktdaten kann ich dir nicht antworten. Wenn du eine Antwort möchtest, trag oben ein, wie ich dich erreiche.</p>
           <p class="msg-small" data-i18n="msg.privacy">Technisch wird die Nachricht über den Dienst Web3Forms an mich weitergeleitet.</p>
         </form>
       </section>
