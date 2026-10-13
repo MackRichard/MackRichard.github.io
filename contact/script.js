@@ -123,7 +123,7 @@ const TEXTS = {
     "visit.world": "Welt",
     "visit.europe": "Europa",
     "visit.view": "Kartenausschnitt wählen",
-    "visit.map": "Karte: besuchte Länder sind markiert. Die Liste darunter nennt sie alle.",
+    "visit.map": "Karte: besuchte Länder und Wunschziele sind farbig markiert. Die Listen darunter nennen sie alle.",
     "reg1": "Nordeuropa",
     "reg2": "Mittel- und Westeuropa",
     "reg3": "Südeuropa",
@@ -175,6 +175,13 @@ const TEXTS = {
     "msg.setup": "Das Formular ist noch nicht eingerichtet.",
     "msg.reply": "Ich kann dir nicht antworten, weil ich nicht weiß, wer du bist. Wenn du eine Antwort möchtest, schreib in die Nachricht, wie ich dich erreiche.",
     "msg.privacy": "Technisch wird die Nachricht über den Dienst Web3Forms an mich weitergeleitet.",
+    "map.seen": "Besucht",
+    "map.wish": "Wunschziele",
+    "reg4": "Wunschländer",
+    "c.id": "Indonesien",
+    "c.pe": "Peru",
+    "c.us": "USA",
+    "c.be": "Belgien",
     "friends.title": "Freunde",
     "friends.intro": "Persönliche Websites meiner Freunde. Schau gern vorbei.",
 
@@ -300,7 +307,7 @@ const TEXTS = {
     "visit.world": "World",
     "visit.europe": "Europe",
     "visit.view": "Choose map section",
-    "visit.map": "Map: visited countries are highlighted. The list below names them all.",
+    "visit.map": "Map: visited countries and wish-list countries are highlighted in color. The lists below name them all.",
     "reg1": "Northern Europe",
     "reg2": "Central and Western Europe",
     "reg3": "Southern Europe",
@@ -352,6 +359,13 @@ const TEXTS = {
     "msg.setup": "The form is not set up yet.",
     "msg.reply": "I cannot reply, because I do not know who you are. If you would like an answer, include in your message how I can reach you.",
     "msg.privacy": "Technically, the message is forwarded to me through the service Web3Forms.",
+    "map.seen": "Visited",
+    "map.wish": "Wish list",
+    "reg4": "Wish list",
+    "c.id": "Indonesia",
+    "c.pe": "Peru",
+    "c.us": "USA",
+    "c.be": "Belgium",
     "friends.title": "Friends",
     "friends.intro": "Personal websites of my friends. Feel free to take a look.",
 
@@ -586,14 +600,19 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
   if (!box) return;
   const svg = document.getElementById("map");
   const landPath = document.getElementById("map-land");
+  const wishPath = document.getElementById("map-wish");
   const seenPath = document.getElementById("map-seen");
   const tabs = Array.from(box.querySelectorAll(".map-tab"));
 
   // Besuchte Länder (ISO-3-Buchstaben-Codes). Hier einfach ergänzen.
   const VISITED = new Set(["DEU", "AUT", "POL", "DNK", "SWE", "NLD", "FRA", "ITA", "ESP", "PRT", "CZE"]);
+  // Wunschländer (werden in der Akzentfarbe markiert)
+  const WISH = new Set(["IDN", "PER", "USA", "BEL"]);
   const BY_NAME = { "Germany": "DEU", "Austria": "AUT", "Poland": "POL", "Denmark": "DNK", "Sweden": "SWE",
                     "Netherlands": "NLD", "France": "FRA", "Italy": "ITA", "Spain": "ESP", "Portugal": "PRT",
-                    "Czech Republic": "CZE", "Czechia": "CZE" };
+                    "Czech Republic": "CZE", "Czechia": "CZE",
+                    "Indonesia": "IDN", "Peru": "PER", "United States of America": "USA",
+                    "United States": "USA", "Belgium": "BEL" };
   const DATA_URL = "https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json";
 
   // Ausschnitte: sx staucht die Breite (Europa), box ist der sichtbare Bereich
@@ -645,12 +664,14 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
 
   function render(view) {
     const v = VIEWS[view];
-    let land = "", seen = "";
+    let land = "", wish = "", seen = "";
     features.forEach(function (f) {
-      if (f.seen) seen += geomPath(f.geom, v.sx, true);
+      if (f.kind === "seen") seen += geomPath(f.geom, v.sx, true);
+      else if (f.kind === "wish") wish += geomPath(f.geom, v.sx, false);
       else land += geomPath(f.geom, v.sx, false);
     });
     landPath.setAttribute("d", land);
+    wishPath.setAttribute("d", wish);
     seenPath.setAttribute("d", seen);
     svg.setAttribute("viewBox", v.box.join(" "));
     tabs.forEach(function (t) { t.setAttribute("aria-pressed", String(t.dataset.view === view)); });
@@ -665,8 +686,11 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
     .then(function (data) {
       features = data.features
         .filter(function (f) { return codeOf(f) !== "ATA"; })
-        .map(function (f) { return { seen: VISITED.has(codeOf(f)), geom: f.geometry }; });
-      if (!features.some(function (f) { return f.seen; })) return;
+        .map(function (f) {
+          const c = codeOf(f);
+          return { kind: VISITED.has(c) ? "seen" : WISH.has(c) ? "wish" : "land", geom: f.geometry };
+        });
+      if (!features.some(function (f) { return f.kind === "seen"; })) return;
       render("world");
       box.hidden = false;
     })
@@ -847,4 +871,44 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
     renderStatus();
     if (!send.disabled) send.textContent = t("msg.send");
   });
+})();
+
+/* ---------- 12. Scroll-Effekt: unscharf, dann scharf (nur Startseite) ---------- */
+
+(function scrollReveal() {
+  if (!document.getElementById("about")) return;   // Kontakt- und Fehlerseite: kein Effekt
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const selectors = [
+    ".hero-inner > *", ".section > h2", ".content > p", ".content > details",
+    ".facts > div", ".projects > li", ".skills > div", ".timeline > li",
+    ".certs > li", ".rows > li"
+  ];
+
+  const items = [];
+  selectors.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (el.closest(".fold")) return;             // Inhalt im Klappbereich bleibt unberührt
+      if (items.indexOf(el) === -1) items.push(el);
+    });
+  });
+
+  // Geschwister erscheinen leicht versetzt, das wirkt ruhiger
+  const seen = new Map();
+  items.forEach(function (el) {
+    const i = seen.get(el.parentElement) || 0;
+    seen.set(el.parentElement, i + 1);
+    el.style.setProperty("--d", Math.min(i, 5) * 70 + "ms");
+    el.classList.add("reveal");
+  });
+
+  // Beim Betreten wird scharf, beim Verlassen (nach oben oder unten) wieder unscharf
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      entry.target.classList.toggle("in", entry.isIntersecting);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+  items.forEach(function (el) { observer.observe(el); });
 })();
