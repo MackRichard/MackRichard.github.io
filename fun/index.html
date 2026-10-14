@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun – Schere Stein Papier</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Tastatur-Navigation (Accessibility) -->
+  <a href="#main" class="skip">Zum Inhalt springen</a>
+
+  <!-- Kopfleiste / Header (ohne Sprachumschalter, dafür mit aktivem "Fun"-Link) -->
+  <header class="site-header">
+    <div class="wrap bar">
+      <a href="index.html" class="brand">Richard Mack</a>
+
+      <nav class="nav">
+        <a href="index.html#about">Über mich</a>
+        <a href="index.html#projects">Projekte</a>
+        <a href="index.html#skills">Fähigkeiten</a>
+        <a href="index.html#timeline">Weg</a>
+        <a href="index.html#contact">Kontakt</a>
+        <a href="fun.html" class="active">Fun</a>
+      </nav>
+
+      <div class="controls">
+        <button class="ctl theme-ctl" id="theme-toggle" aria-label="Design umschalten">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main id="main">
+    <div class="wrap" style="padding-top: 4rem; padding-bottom: 5rem;">
+      <h1 class="page-title">Schere Stein Papier</h1>
+      <p class="note">Tritt gegen den Zufallsgenerator an! Wer zuerst 5 Punkte hat, gewinnt die Runde.</p>
+
+      <!-- Spiel-Container -->
+      <div class="msg-panel game-container">
+        <!-- Punktestand -->
+        <div class="score-board">
+          <div class="score-box">
+            <span>Du</span>
+            <span class="num" id="player-score">0</span>
+          </div>
+          <div class="score-vs">VS</div>
+          <div class="score-box">
+            <span>KI</span>
+            <span class="num" id="ai-score">0</span>
+          </div>
+        </div>
+
+        <!-- Kampf-Ausgabe -->
+        <div class="battle-arena">
+          <div class="fighter">
+            <span class="fighter-label">Du wählst</span>
+            <div class="fighter-icon" id="player-choice">❓</div>
+          </div>
+          <div class="fighter">
+            <span class="fighter-label">KI wählt</span>
+            <div class="fighter-icon" id="ai-choice">❓</div>
+          </div>
+        </div>
+
+        <p class="msg-status" id="game-status">Triff deine Wahl!</p>
+
+        <!-- Steuerungs-Buttons -->
+        <div class="game-buttons">
+          <button class="btn btn-choice" data-choice="schere">✂️ Schere</button>
+          <button class="btn btn-choice" data-choice="stein">🪨 Stein</button>
+          <button class="btn btn-choice" data-choice="papier">📄 Papier</button>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center;">
+          <button class="btn" id="reset-game" style="display: none;">Neues Spiel starten</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Nach-Oben-Button -->
+  <button class="to-top" id="to-top" aria-label="Nach oben scrollen">↑</button>
+
+  <!-- Fußzeile -->
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <p>&copy; 2026 Richard Mack. Alle Rechte vorbehalten.</p>
+      <p>Ortszeit: <span class="clock" id="clock">00:00:00</span></p>
+    </div>
+  </footer>
+
+  <!-- Einbinden des JavaScripts -->
+  <script src="script.js"></script>
+</body>
+</html>
