@@ -839,3 +839,71 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ---------- Mini-Game Ergänzungen ---------- */
+
+.game-container {
+  text-align: center;
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.score-box {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.score-vs {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.battle-arena {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.fighter {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.fighter-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.fighter-icon {
+  font-size: 3rem;
+  min-height: 4.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.game-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-choice {
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+}
