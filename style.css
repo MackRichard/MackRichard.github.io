@@ -592,3 +592,61 @@ a.project:hover { border-color: #a99568; }
 .private-prompt[hidden] {
     display: none !important;
 }
+
+/* Nativer, aufklappbarer Zugang */
+.private-access {
+    position: relative;
+    z-index: 30;
+    pointer-events: auto;
+    text-align: center;
+}
+
+/* Klickbarer Aufklapp-Button */
+.private-open-summary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 31;
+
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+
+    padding: 12px 22px;
+    border: 1px solid #b9ad9d;
+    border-radius: 999px;
+
+    background: #f4eee4;
+    color: #40382f;
+
+    font: inherit;
+    font-weight: 600;
+
+    pointer-events: auto;
+}
+
+.private-open-summary::-webkit-details-marker {
+    display: none;
+}
+
+.private-open-summary::marker {
+    content: "";
+}
+
+.private-open-summary:hover {
+    background: #eae1d5;
+}
+
+/* Button verschwindet, sobald das Feld geöffnet wurde */
+.private-access[open] > .private-open-summary {
+    display: none;
+}
+
+/* Formular bleibt anklickbar */
+.private-access .private-unlock-form {
+    position: relative;
+    z-index: 32;
+    pointer-events: auto;
+}
