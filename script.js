@@ -365,7 +365,7 @@ document.addEventListener("click", function(event) {
     document.querySelectorAll(".private-unlock-form")
         .forEach(form => {
 
-            form.addEventListener("submit", async event => {
+            form.addEventListener("submit", async (event) => {
 
                 event.preventDefault();
 
