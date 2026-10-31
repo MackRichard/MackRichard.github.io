@@ -534,3 +534,61 @@ a.project:hover { border-color: #a99568; }
 .private-container[data-unlocked="true"] .private-overlay {
     display: none;
 }
+
+/* Fix: Private Buttons müssen anklickbar sein */
+
+.private-container {
+    position: relative;
+    isolation: isolate;
+    min-height: 260px;
+}
+
+/* Verschwommener Hintergrund */
+.private-placeholder {
+    position: relative;
+    z-index: 1;
+
+    filter: blur(7px);
+
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Ebene über dem verschwommenen Inhalt */
+.private-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: auto;
+}
+
+/* Button und Formular */
+.private-prompt,
+.private-unlock-form {
+    position: relative;
+    z-index: 21;
+
+    pointer-events: auto;
+}
+
+/* Buttons ausdrücklich anklickbar machen */
+.private-open-button,
+.private-unlock-form button {
+    position: relative;
+    z-index: 22;
+
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* Formular weiterhin korrekt ausblenden */
+.private-unlock-form[hidden],
+.private-prompt[hidden] {
+    display: none !important;
+}
