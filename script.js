@@ -159,3 +159,253 @@ function scheduleStreakUpdate() {
 }
 
 scheduleStreakUpdate();
+
+// ============================================
+// PRIVATE PORTFOLIO ACCESS
+// ============================================
+
+(() => {
+
+    const ITERATIONS = 600000;
+
+    const accessPanel =
+        document.getElementById("privateAccess");
+
+    const showButton =
+        document.getElementById("showPrivateForm");
+
+    const unlockForm =
+        document.getElementById("privateUnlockForm");
+
+    const codeInput =
+        document.getElementById("privateCode");
+
+    const status =
+        document.getElementById("privateStatus");
+
+
+    if (!accessPanel || !showButton || !unlockForm) {
+        return;
+    }
+
+
+    // Base64 in Bytes umwandeln
+    function fromBase64(value) {
+
+        const binary = atob(value);
+
+        return Uint8Array.from(
+            binary,
+            character => character.charCodeAt(0)
+        );
+
+    }
+
+
+    // AES-Schlüssel aus dem individuellen Code ableiten
+    async function deriveKey(secret, salt, iterations) {
+
+        const material = await crypto.subtle.importKey(
+            "raw",
+            new TextEncoder().encode(secret),
+            "PBKDF2",
+            false,
+            ["deriveKey"]
+        );
+
+        return crypto.subtle.deriveKey(
+
+            {
+                name: "PBKDF2",
+                salt: salt,
+                iterations: iterations,
+                hash: "SHA-256"
+            },
+
+            material,
+
+            {
+                name: "AES-GCM",
+                length: 256
+            },
+
+            false,
+
+            ["decrypt"]
+
+        );
+    }
+
+
+    // Datensatz entschlüsseln
+    async function decryptBundle(record, secret) {
+
+        const salt = fromBase64(record.salt);
+
+        const iv = fromBase64(record.iv);
+
+        const ciphertext = fromBase64(
+            record.ciphertext
+        );
+
+        const key = await deriveKey(
+            secret,
+            salt,
+            record.iterations || ITERATIONS
+        );
+
+        const decrypted = await crypto.subtle.decrypt(
+
+            {
+                name: "AES-GCM",
+                iv: iv
+            },
+
+            key,
+
+            ciphertext
+
+        );
+
+        return JSON.parse(
+            new TextDecoder().decode(decrypted)
+        );
+
+    }
+
+
+    // Formular anzeigen
+    showButton.addEventListener("click", () => {
+
+        unlockForm.hidden = false;
+
+        showButton.hidden = true;
+
+        codeInput.focus();
+
+    });
+
+
+    // Zugangscode überprüfen
+    unlockForm.addEventListener("submit", async event => {
+
+        event.preventDefault();
+
+        status.textContent = "Überprüfe Zugangscode...";
+
+        const code = codeInput.value.trim();
+
+        const separator = code.indexOf(".");
+
+        if (separator === -1) {
+
+            status.textContent = "Ungültiger Zugangscode.";
+
+            return;
+        }
+
+        const id = code.slice(0, separator);
+
+        const secret = code.slice(separator + 1);
+
+        if (
+            !/^[a-f0-9]{12}$/i.test(id) ||
+            !/^[A-Za-z0-9_-]{22}$/.test(secret)
+        ) {
+
+            status.textContent = "Ungültiger Zugangscode.";
+
+            return;
+        }
+
+
+        // Passenden Datensatz finden
+        const bundles = window.PRIVATE_BUNDLES || [];
+
+        const record = bundles.find(
+            item => item.id === id
+        );
+
+        if (!record) {
+
+            status.textContent = "Zugangscode nicht gefunden.";
+
+            return;
+        }
+
+
+        try {
+
+            const privateData = await decryptBundle(
+                record,
+                secret
+            );
+
+            const sections = [
+                "about",
+                "journey",
+                "currently"
+            ];
+
+            // Alle drei Bereiche freischalten
+            for (const section of sections) {
+
+                const element = document.querySelector(
+                    `[data-private-target="${section}"]`
+                );
+
+                if (
+                    !element ||
+                    typeof privateData[section] !== "string"
+                ) {
+                    throw new Error("Inhalt unvollständig.");
+                }
+
+                element.innerHTML = privateData[section];
+
+                element.classList.remove(
+                    "private-placeholder"
+                );
+
+                element.removeAttribute("aria-hidden");
+
+                element.closest(".private-section")
+                    .dataset.unlocked = "true";
+            }
+
+
+            // Bisherige Sprachfunktion erneut anwenden
+            const language =
+                document.documentElement.lang || "de";
+
+            if (typeof setLanguage === "function") {
+                setLanguage(language);
+            }
+
+            // Duolingo-Zahl aktualisieren, falls vorhanden
+            if (typeof updateStreak === "function") {
+                updateStreak();
+            }
+
+
+            // Zugangseingabe entfernen
+            accessPanel.hidden = true;
+
+            status.textContent = "";
+
+        } catch (error) {
+
+            status.textContent =
+                "Falscher Code oder verschlüsselte Daten ungültig.";
+
+            codeInput.value = "";
+
+            codeInput.focus();
+
+            console.error(error);
+
+        }
+
+    });
+
+})();
