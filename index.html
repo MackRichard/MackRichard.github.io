@@ -29,20 +29,56 @@
   <div class="quick-facts"><span>Andreas Gymnasium · Q1</span><span data-de="Abitur 2028" data-en="Abitur 2028">Abitur 2028</span><span>MINT</span></div>
 </section>
 
-<section class="section wrap" id="about">
-  <h2 data-de="Über mich" data-en="About me">Über mich</h2>
-  <div class="about">
-    <div>
-      <p class="lead" data-de="Mich reizt es, Ideen aus Mathematik und Informatik in funktionierende Programme zu verwandeln." data-en="I enjoy turning ideas from mathematics and computer science into working programs.">Mich reizt es, Ideen aus Mathematik und Informatik in funktionierende Programme zu verwandeln.</p>
-      <p class="muted" data-de="Ich lerne gerne, indem ich Dinge selbst baue: von kleinen Simulationen bis zu Experimenten mit Algorithmen. Besonders interessieren mich die Grundlagen hinter Software und die Frage, wie aus einer Idee ein funktionierendes Projekt wird. Außerdem interessiere ich mich für Jugend forscht und eigene wissenschaftlich-technische Fragestellungen." data-en="I like learning by building things myself, from small simulations to algorithm experiments. I’m especially interested in the principles behind software and how ideas become working projects. I’m also interested in Jugend forscht and exploring my own scientific and technical questions.">Ich lerne gerne, indem ich Dinge selbst baue: von kleinen Simulationen bis zu Experimenten mit Algorithmen. Besonders interessieren mich die Grundlagen hinter Software und die Frage, wie aus einer Idee ein funktionierendes Projekt wird. Außerdem interessiere ich mich für Jugend forscht und eigene wissenschaftlich-technische Fragestellungen.</p>
+
+  
+<div class="private-access wrap" id="privateAccess">
+
+    <button id="showPrivateForm">
+        🔒 Klicken, um Inhalt anzuzeigen
+    </button>
+
+    <form id="privateUnlockForm" hidden>
+
+        <label for="privateCode">
+            Individueller Zugangscode
+        </label>
+
+        <input
+            id="privateCode"
+            type="password"
+            placeholder="Zugangscode eingeben"
+            autocomplete="off"
+            required
+        >
+
+        <button type="submit">
+            Inhalte freischalten
+        </button>
+
+        <p id="privateStatus" aria-live="polite"></p>
+
+    </form>
+
+</div>
+
+
+  
+<section class="section private-section" id="about">
+
+    <div class="wrap private-placeholder"
+         data-private-target="about"
+         aria-hidden="true">
+
+        <div class="placeholder-title"></div>
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line medium"></div>
+
     </div>
-    <dl class="facts">
-      <div><dt data-de="Aktuelle Stufe" data-en="Current year">Aktuelle Stufe</dt><dd data-de="11. Klasse · Q1" data-en="Grade 11 · Q1">11. Klasse · Q1</dd></div>
-      <div><dt>Abitur</dt><dd>2028</dd></div>
-      <div><dt data-de="Schwerpunkt" data-en="Focus">Schwerpunkt</dt><dd data-de="MINT seit Klasse 5" data-en="STEM since grade 5">MINT seit Klasse 5</dd></div>
-      <div><dt data-de="Leistungskurse" data-en="Advanced courses">Leistungskurse</dt><dd data-de="Mathematik und Informatik" data-en="Mathematics and computer science">Mathematik und Informatik</dd></div>
-    </dl>
-  </div>
+
 </section>
 
 <section class="section tinted" id="projects"><div class="wrap">
@@ -143,18 +179,28 @@
   </div>
 </section>
 
-<section class="section tinted" id="journey"><div class="wrap">
-  <h2 data-de="Mein Weg" data-en="My journey">Mein Weg</h2>
-  <p class="section-intro" data-de="Stationen aus Bildung und bisherigen Erfahrungen – chronologisch geordnet." data-en="Education and experience, in chronological order.">Stationen aus Bildung und bisherigen Erfahrungen – chronologisch geordnet.</p>
-  <ol class="timeline">
-    <li><time data-de="Klasse 1–4" data-en="Grades 1–4">Klasse 1–4</time><div><h3>KreativitätsGrundschule Berlin Friedrichshain</h3><p data-de="Grundschulzeit mit besonderem Fokus auf Kreativität." data-en="Primary school with a special focus on creativity.">Grundschulzeit mit besonderem Fokus auf Kreativität.</p></div></li>
-    <li><time data-de="Seit Klasse 5" data-en="Since grade 5">Seit Klasse 5</time><div><h3>Andreas Gymnasium Berlin Friedrichshain · MINT</h3><p data-de="Seit Klasse 5 am Gymnasium mit MINT-Profil. Aktuell 11. Klasse (Q1); Leistungskurse: Spezialleistungskurs Mathematik und Informatik." data-en="At the school since grade 5 with a STEM focus. Currently in grade 11 (Q1); advanced courses: mathematics and computer science.">Seit Klasse 5 am Gymnasium mit MINT-Profil. Aktuell 11. Klasse (Q1); Leistungskurse: Spezialleistungskurs Mathematik und Informatik.</p></div></li>
-    <li><time>April 2025</time><div><h3 data-de="Praktikum am dEIn-Labor · TU Berlin" data-en="Internship at dEIn-Labor · TU Berlin">Praktikum am dEIn-Labor · TU Berlin</h3><p data-de="Einblicke in Elektrotechnik und Informatik im Labor der TU Berlin." data-en="Insights into electrical engineering and computer science at TU Berlin’s lab.">Einblicke in Elektrotechnik und Informatik im Labor der TU Berlin.</p></div></li>
-    <li><time>2026–2027</time><div><h3 data-de="Oberstufe · Q1" data-en="Upper secondary · Q1">Oberstufe · Q1</h3><p data-de="MINT-Profil mit Spezialleistungskursen Mathematik und Informatik." data-en="STEM focus with advanced courses in mathematics and computer science.">MINT-Profil mit Spezialleistungskursen Mathematik und Informatik.</p></div></li>
-    <li><time data-de="Sommer 2027" data-en="Summer 2027">Sommer 2027</time><div><h3>Latinum</h3><p data-de="Geplant nach Lateinunterricht von Klasse 7 bis einschließlich Klasse 11." data-en="Expected after studying Latin from grade 7 through grade 11.">Geplant nach Lateinunterricht von Klasse 7 bis einschließlich Klasse 11.</p></div></li>
-    <li><time>2028</time><div><h3>Abitur</h3><p data-de="Geplanter Schulabschluss am Andreas Gymnasium Berlin Friedrichshain." data-en="Expected school-leaving qualification at Andreas Gymnasium Berlin Friedrichshain.">Geplanter Schulabschluss am Andreas Gymnasium Berlin Friedrichshain.</p></div></li>
-  </ol>
-</div></section>
+<section class="section tinted private-section" id="journey">
+
+    <div class="wrap private-placeholder"
+         data-private-target="journey"
+         aria-hidden="true">
+
+        <div class="placeholder-title"></div>
+
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line medium"></div>
+
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line short"></div>
+
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line medium"></div>
+
+        <div class="placeholder-line long"></div>
+
+    </div>
+
+</section>
 
 <section class="section wrap" id="languages">
   <h2 data-de="Sprachen" data-en="Languages">Sprachen</h2>
@@ -166,88 +212,22 @@
   </div>
 </section>
 
-<section class="section tinted" id="currently">
-  <div class="wrap">
+<section class="section tinted private-section" id="currently">
 
-    <h2 data-de="Aktuell" data-en="Currently">Aktuell</h2>
+    <div class="wrap private-placeholder"
+         data-private-target="currently"
+         aria-hidden="true">
 
-    <div class="interest-list">
+        <div class="placeholder-title"></div>
 
-      <!-- Duolingo -->
-      <a class="interest-row"
-         href="https://www.duolingo.com/profile/Richard_Mack"
-         target="_blank"
-         rel="noopener noreferrer">
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line medium"></div>
 
-        <span
-          data-de="Duolingo-Streak"
-          data-en="Duolingo streak">
-          Duolingo-Streak
-        </span>
-
-        <strong class="warm" id="duolingoStreak">
-          1.129 Tage
-        </strong>
-
-        <b>↗</b>
-      </a>
-
-
-      <!-- Sprachen -->
-      <div class="interest-row">
-        <span
-          data-de="Sprachen"
-          data-en="Languages">
-          Sprachen
-        </span>
-
-        <strong
-          data-de="Ich lerne Niederländisch und Portugiesisch."
-          data-en="I am learning Dutch and Portuguese.">
-          Ich lerne Niederländisch und Portugiesisch.
-        </strong>
-
-        <span></span>
-      </div>
-
-
-      <!-- Projekte -->
-      <div class="interest-row">
-        <span
-          data-de="Projekte"
-          data-en="Projects">
-          Projekte
-        </span>
-
-        <strong
-          data-de="Ich arbeite an meiner Website und größeren Projekten."
-          data-en="I am working on my website and larger projects.">
-          Ich arbeite an meiner Website und größeren Projekten.
-        </strong>
-
-        <span></span>
-      </div>
-
-
-      <!-- Schule -->
-      <div class="interest-row">
-        <span
-          data-de="Schule"
-          data-en="School">
-          Schule
-        </span>
-
-        <strong
-          data-de="Ich denke über Schule und die nächsten Schritte nach."
-          data-en="I am thinking about school and my next steps.">
-          Ich denke über Schule und die nächsten Schritte nach.
-        </strong>
-
-        <span></span>
-      </div>
+        <div class="placeholder-line long"></div>
+        <div class="placeholder-line short"></div>
 
     </div>
-  </div>
+
 </section>
 </main>
 <footer class="footer wrap">
