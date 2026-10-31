@@ -29,57 +29,67 @@
   <div class="hero-actions"><a class="button dark" href="#projects" data-de="Projekte ansehen" data-en="View projects">Projekte ansehen</a><a class="plain-link" href="https://github.com/MackRichard" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
   <div class="quick-facts"><span>Andreas Gymnasium · Q1</span><span data-de="Abitur 2028" data-en="Abitur 2028">Abitur 2028</span><span>MINT</span></div>
 </section>
-
-
-  
-<div class="private-access wrap" id="privateAccess">
-
-    <button id="showPrivateForm">
-        🔒 Klicken, um Inhalt anzuzeigen
-    </button>
-
-    <form id="privateUnlockForm" hidden>
-
-        <label for="privateCode">
-            Individueller Zugangscode
-        </label>
-
-        <input
-            id="privateCode"
-            type="password"
-            placeholder="Zugangscode eingeben"
-            autocomplete="off"
-            required
-        >
-
-        <button type="submit">
-            Inhalte freischalten
-        </button>
-
-        <p id="privateStatus" aria-live="polite"></p>
-
-    </form>
-
-</div>
-
-
   
 <section class="section private-section" id="about">
+    <div class="wrap private-container">
 
-    <div class="wrap private-placeholder"
-         data-private-target="about"
-         aria-hidden="true">
+        <div class="private-placeholder"
+             data-private-target="about"
+             aria-hidden="true">
 
-        <div class="placeholder-title"></div>
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line medium"></div>
-        <div class="placeholder-line short"></div>
+            <div class="placeholder-title"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+            <div class="placeholder-line short"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
 
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line medium"></div>
+        </div>
+
+        <div class="private-overlay">
+
+            <div class="private-prompt">
+
+                <button class="private-open-button"
+                        type="button"
+                        data-de="Klicken, um Inhalt anzuzeigen"
+                        data-en="Click to reveal content">
+                    Klicken, um Inhalt anzuzeigen
+                </button>
+
+                <p data-de="Aufgrund privater Informationen verborgen."
+                   data-en="Hidden due to private information.">
+                    Aufgrund privater Informationen verborgen.
+                </p>
+
+            </div>
+
+            <form class="private-unlock-form" hidden>
+
+                <label data-de="Individueller Zugangscode"
+                       data-en="Individual access code">
+                    Individueller Zugangscode
+                </label>
+
+                <input class="private-code"
+                       type="password"
+                       placeholder="Zugangscode"
+                       autocomplete="off"
+                       required>
+
+                <button type="submit"
+                        data-de="Freischalten"
+                        data-en="Unlock">
+                    Freischalten
+                </button>
+
+                <p class="private-status"></p>
+
+            </form>
+
+        </div>
 
     </div>
-
 </section>
 
 <section class="section tinted" id="projects"><div class="wrap">
@@ -181,26 +191,66 @@
 </section>
 
 <section class="section tinted private-section" id="journey">
+    <div class="wrap private-container">
 
-    <div class="wrap private-placeholder"
-         data-private-target="journey"
-         aria-hidden="true">
+        <div class="private-placeholder"
+             data-private-target="journey"
+             aria-hidden="true">
 
-        <div class="placeholder-title"></div>
+            <div class="placeholder-title"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line short"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
 
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line medium"></div>
+        </div>
 
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line short"></div>
+        <div class="private-overlay">
 
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line medium"></div>
+            <div class="private-prompt">
 
-        <div class="placeholder-line long"></div>
+                <button class="private-open-button"
+                        type="button"
+                        data-de="Klicken, um Inhalt anzuzeigen"
+                        data-en="Click to reveal content">
+                    Klicken, um Inhalt anzuzeigen
+                </button>
+
+                <p data-de="Aufgrund privater Informationen verborgen."
+                   data-en="Hidden due to private information.">
+                    Aufgrund privater Informationen verborgen.
+                </p>
+
+            </div>
+
+            <form class="private-unlock-form" hidden>
+
+                <label data-de="Individueller Zugangscode"
+                       data-en="Individual access code">
+                    Individueller Zugangscode
+                </label>
+
+                <input class="private-code"
+                       type="password"
+                       placeholder="Zugangscode"
+                       autocomplete="off"
+                       required>
+
+                <button type="submit"
+                        data-de="Freischalten"
+                        data-en="Unlock">
+                    Freischalten
+                </button>
+
+                <p class="private-status"></p>
+
+            </form>
+
+        </div>
 
     </div>
-
 </section>
 
 <section class="section wrap" id="languages">
@@ -214,21 +264,64 @@
 </section>
 
 <section class="section tinted private-section" id="currently">
+    <div class="wrap private-container">
 
-    <div class="wrap private-placeholder"
-         data-private-target="currently"
-         aria-hidden="true">
+        <div class="private-placeholder"
+             data-private-target="currently"
+             aria-hidden="true">
 
-        <div class="placeholder-title"></div>
+            <div class="placeholder-title"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line medium"></div>
+            <div class="placeholder-line long"></div>
+            <div class="placeholder-line short"></div>
 
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line medium"></div>
+        </div>
 
-        <div class="placeholder-line long"></div>
-        <div class="placeholder-line short"></div>
+        <div class="private-overlay">
+
+            <div class="private-prompt">
+
+                <button class="private-open-button"
+                        type="button"
+                        data-de="Klicken, um Inhalt anzuzeigen"
+                        data-en="Click to reveal content">
+                    Klicken, um Inhalt anzuzeigen
+                </button>
+
+                <p data-de="Aufgrund privater Informationen verborgen."
+                   data-en="Hidden due to private information.">
+                    Aufgrund privater Informationen verborgen.
+                </p>
+
+            </div>
+
+            <form class="private-unlock-form" hidden>
+
+                <label data-de="Individueller Zugangscode"
+                       data-en="Individual access code">
+                    Individueller Zugangscode
+                </label>
+
+                <input class="private-code"
+                       type="password"
+                       placeholder="Zugangscode"
+                       autocomplete="off"
+                       required>
+
+                <button type="submit"
+                        data-de="Freischalten"
+                        data-en="Unlock">
+                    Freischalten
+                </button>
+
+                <p class="private-status"></p>
+
+            </form>
+
+        </div>
 
     </div>
-
 </section>
 </main>
 <footer class="footer wrap">
