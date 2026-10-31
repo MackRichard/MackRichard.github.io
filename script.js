@@ -313,30 +313,52 @@ scheduleStreakUpdate();
     }
 
 
-    // Alle Buttons zum Öffnen der Formulare
-    document.querySelectorAll(".private-open-button")
-        .forEach(button => {
+// ============================================
+// PRIVATE BUTTONS – CLICK HANDLER
+// ============================================
 
-            button.addEventListener("click", () => {
+document.addEventListener("click", function(event) {
 
-                const overlay =
-                    button.closest(".private-overlay");
+    const button = event.target.closest(
+        ".private-open-button"
+    );
 
-                const prompt =
-                    overlay.querySelector(".private-prompt");
+    if (!button) return;
 
-                const form =
-                    overlay.querySelector(".private-unlock-form");
+    event.preventDefault();
 
-                prompt.hidden = true;
+    const overlay = button.closest(
+        ".private-overlay"
+    );
 
-                form.hidden = false;
+    if (!overlay) return;
 
-                form.querySelector(".private-code").focus();
+    const prompt = overlay.querySelector(
+        ".private-prompt"
+    );
 
-            });
+    const form = overlay.querySelector(
+        ".private-unlock-form"
+    );
 
-        });
+    if (!prompt || !form) return;
+
+    // Hinweis und Button ausblenden
+    prompt.hidden = true;
+
+    // Passwortfeld anzeigen
+    form.hidden = false;
+
+    // Cursor direkt ins Eingabefeld setzen
+    const input = form.querySelector(
+        ".private-code"
+    );
+
+    if (input) {
+        input.focus();
+    }
+
+});
 
 
     // Alle drei Formulare unterstützen
