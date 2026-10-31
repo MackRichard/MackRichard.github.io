@@ -293,3 +293,95 @@ a.project:hover { border-color: #a99568; }
     }
 
 }
+
+/* Private sections */
+
+.private-access {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.private-access button {
+    padding: 11px 17px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.private-access form {
+    max-width: 380px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--card);
+}
+
+.private-access label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.private-access input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: var(--paper);
+    color: var(--ink);
+    box-sizing: border-box;
+}
+
+#privateStatus {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.private-section {
+    min-height: 240px;
+}
+
+.private-placeholder {
+    filter: blur(7px);
+    user-select: none;
+    pointer-events: none;
+    padding-top: 15px;
+}
+
+.placeholder-title {
+    width: 35%;
+    height: 36px;
+    margin-bottom: 30px;
+    background: #c9bea6;
+    border-radius: 4px;
+}
+
+.placeholder-line {
+    height: 13px;
+    margin-bottom: 17px;
+    background: #c9bea6;
+    border-radius: 3px;
+}
+
+.placeholder-line.long {
+    width: 90%;
+}
+
+.placeholder-line.medium {
+    width: 70%;
+}
+
+.placeholder-line.short {
+    width: 45%;
+}
+
+.private-section[data-unlocked="true"] {
+    min-height: auto;
+}
