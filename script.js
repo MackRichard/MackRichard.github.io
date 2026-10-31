@@ -168,6 +168,26 @@ scheduleStreakUpdate();
 
     const ITERATIONS = 600000;
 
+    const accessPanel =
+        document.getElementById("privateAccess");
+
+    const showButton =
+        document.getElementById("showPrivateForm");
+
+    const unlockForm =
+        document.getElementById("privateUnlockForm");
+
+    const codeInput =
+        document.getElementById("privateCode");
+
+    const status =
+        document.getElementById("privateStatus");
+
+
+    if (!accessPanel || !showButton || !unlockForm) {
+        return;
+    }
+
 
     // Base64 in Bytes umwandeln
     function fromBase64(value) {
@@ -182,7 +202,7 @@ scheduleStreakUpdate();
     }
 
 
-    // AES-Schlüssel ableiten
+    // AES-Schlüssel aus dem individuellen Code ableiten
     async function deriveKey(secret, salt, iterations) {
 
         const material = await crypto.subtle.importKey(
@@ -214,14 +234,14 @@ scheduleStreakUpdate();
             ["decrypt"]
 
         );
-
     }
 
 
-    // Verschlüsselte Daten entschlüsseln
+    // Datensatz entschlüsseln
     async function decryptBundle(record, secret) {
 
         const salt = fromBase64(record.salt);
+
         const iv = fromBase64(record.iv);
 
         const ciphertext = fromBase64(
@@ -254,193 +274,138 @@ scheduleStreakUpdate();
     }
 
 
-    // Alle drei Abschnitte freischalten
-    function revealSections(privateData) {
+    // Formular anzeigen
+    showButton.addEventListener("click", () => {
 
-        const sections = [
-            "about",
-            "journey",
-            "currently"
-        ];
+        unlockForm.hidden = false;
 
-        for (const section of sections) {
+        showButton.hidden = true;
 
-            const element = document.querySelector(
-                `[data-private-target="${section}"]`
+        codeInput.focus();
+
+    });
+
+
+    // Zugangscode überprüfen
+    unlockForm.addEventListener("submit", async event => {
+
+        event.preventDefault();
+
+        status.textContent = "Überprüfe Zugangscode...";
+
+        const code = codeInput.value.trim();
+
+        const separator = code.indexOf(".");
+
+        if (separator === -1) {
+
+            status.textContent = "Ungültiger Zugangscode.";
+
+            return;
+        }
+
+        const id = code.slice(0, separator);
+
+        const secret = code.slice(separator + 1);
+
+        if (
+            !/^[a-f0-9]{12}$/i.test(id) ||
+            !/^[A-Za-z0-9_-]{22}$/.test(secret)
+        ) {
+
+            status.textContent = "Ungültiger Zugangscode.";
+
+            return;
+        }
+
+
+        // Passenden Datensatz finden
+        const bundles = window.PRIVATE_BUNDLES || [];
+
+        const record = bundles.find(
+            item => item.id === id
+        );
+
+        if (!record) {
+
+            status.textContent = "Zugangscode nicht gefunden.";
+
+            return;
+        }
+
+
+        try {
+
+            const privateData = await decryptBundle(
+                record,
+                secret
             );
 
-            if (
-                !element ||
-                typeof privateData[section] !== "string"
-            ) {
+            const sections = [
+                "about",
+                "journey",
+                "currently"
+            ];
 
-                throw new Error(
-                    "Private Inhalte unvollständig."
+            // Alle drei Bereiche freischalten
+            for (const section of sections) {
+
+                const element = document.querySelector(
+                    `[data-private-target="${section}"]`
                 );
 
+                if (
+                    !element ||
+                    typeof privateData[section] !== "string"
+                ) {
+                    throw new Error("Inhalt unvollständig.");
+                }
+
+                element.innerHTML = privateData[section];
+
+                element.classList.remove(
+                    "private-placeholder"
+                );
+
+                element.removeAttribute("aria-hidden");
+
+                element.closest(".private-section")
+                    .dataset.unlocked = "true";
             }
 
-            // Private Inhalte einsetzen
-            element.innerHTML =
-                privateData[section];
 
-            // Blur entfernen
-            element.classList.remove(
-                "private-placeholder"
-            );
+            // Bisherige Sprachfunktion erneut anwenden
+            const language =
+                document.documentElement.lang || "de";
 
-            element.removeAttribute("aria-hidden");
+            if (typeof setLanguage === "function") {
+                setLanguage(language);
+            }
 
-            // Den jeweiligen Abschnitt freischalten
-            element.closest(".private-container")
-                .dataset.unlocked = "true";
+            // Duolingo-Zahl aktualisieren, falls vorhanden
+            if (typeof updateStreak === "function") {
+                updateStreak();
+            }
+
+
+            // Zugangseingabe entfernen
+            accessPanel.hidden = true;
+
+            status.textContent = "";
+
+        } catch (error) {
+
+            status.textContent =
+                "Falscher Code oder verschlüsselte Daten ungültig.";
+
+            codeInput.value = "";
+
+            codeInput.focus();
+
+            console.error(error);
 
         }
 
+    });
 
-        // Sprachwechsel erneut anwenden
-        const language =
-            document.documentElement.lang || "de";
-
-        if (typeof setLanguage === "function") {
-            setLanguage(language);
-        }
-
-        if (typeof updateStreak === "function") {
-            updateStreak();
-        }
-
-    }
-
-
-// ============================================
-// PRIVATE BUTTONS – CLICK HANDLER
-// ============================================
-
-document.addEventListener("click", function(event) {
-
-    const button = event.target.closest(".private-open-button");
-
-    if (!button) return;
-
-    event.preventDefault();
-
-    const overlay = button.closest(".private-overlay");
-
-    if (!overlay) return;
-
-    const prompt = overlay.querySelector(".private-prompt");
-    const form = overlay.querySelector(".private-unlock-form");
-
-    if (!prompt || !form) return;
-
-    prompt.hidden = true;
-    form.hidden = false;
-
-    const input = form.querySelector(".private-code");
-
-    if (input) {
-        input.focus();
-    }
-
-});
-
-
-    // Alle drei Formulare unterstützen
-    document.querySelectorAll(".private-unlock-form")
-        .forEach(form => {
-
-            form.addEventListener("submit", async (event) => {
-
-                event.preventDefault();
-
-                const codeInput =
-                    form.querySelector(".private-code");
-
-                const status =
-                    form.querySelector(".private-status");
-
-                const code = codeInput.value.trim();
-
-                status.textContent =
-                    "Überprüfe Zugangscode...";
-
-
-                // Zugangscode zerlegen
-                const separator = code.indexOf(".");
-
-                if (separator === -1) {
-
-                    status.textContent =
-                        "Ungültiger Zugangscode.";
-
-                    return;
-
-                }
-
-                const id = code.slice(0, separator);
-                const secret = code.slice(separator + 1);
-
-
-                // Format überprüfen
-                if (
-                    !/^[a-f0-9]{12}$/i.test(id) ||
-                    !/^[A-Za-z0-9_-]{22}$/.test(secret)
-                ) {
-
-                    status.textContent =
-                        "Ungültiger Zugangscode.";
-
-                    return;
-
-                }
-
-
-                // Passenden Datensatz suchen
-                const bundles =
-                    window.PRIVATE_BUNDLES || [];
-
-                const record = bundles.find(
-                    item => item.id === id
-                );
-
-                if (!record) {
-
-                    status.textContent =
-                        "Zugangscode nicht gefunden.";
-
-                    return;
-
-                }
-
-
-                try {
-
-                    // Daten entschlüsseln
-                    const privateData = await decryptBundle(
-                        record,
-                        secret
-                    );
-
-                    // Alle drei Bereiche freischalten
-                    revealSections(privateData);
-
-                } catch (error) {
-
-                    status.textContent =
-                        "Falscher Zugangscode oder ungültige Daten.";
-
-                    codeInput.value = "";
-
-                    codeInput.focus();
-
-                    console.error(error);
-
-                }
-
-            });
-
-        });
-
-})();
 })();
