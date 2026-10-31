@@ -319,40 +319,25 @@ scheduleStreakUpdate();
 
 document.addEventListener("click", function(event) {
 
-    const button = event.target.closest(
-        ".private-open-button"
-    );
+    const button = event.target.closest(".private-open-button");
 
     if (!button) return;
 
     event.preventDefault();
 
-    const overlay = button.closest(
-        ".private-overlay"
-    );
+    const overlay = button.closest(".private-overlay");
 
     if (!overlay) return;
 
-    const prompt = overlay.querySelector(
-        ".private-prompt"
-    );
-
-    const form = overlay.querySelector(
-        ".private-unlock-form"
-    );
+    const prompt = overlay.querySelector(".private-prompt");
+    const form = overlay.querySelector(".private-unlock-form");
 
     if (!prompt || !form) return;
 
-    // Hinweis und Button ausblenden
     prompt.hidden = true;
-
-    // Passwortfeld anzeigen
     form.hidden = false;
 
-    // Cursor direkt ins Eingabefeld setzen
-    const input = form.querySelector(
-        ".private-code"
-    );
+    const input = form.querySelector(".private-code");
 
     if (input) {
         input.focus();
