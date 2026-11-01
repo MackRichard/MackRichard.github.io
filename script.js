@@ -320,18 +320,25 @@ scheduleStreakUpdate();
 
 
         // Passenden Datensatz finden
-        const bundles = window.PRIVATE_BUNDLES || [];
+        // Passenden Datensatz finden
+    const bundles = Array.isArray(window.PRIVATE_BUNDLES)
+        ? window.PRIVATE_BUNDLES
+        : [];
 
-        const record = bundles.find(
-            item => item.id === id
-        );
+    const record = bundles.find(
+        item => String(item.id).trim().toLowerCase() === id.trim().toLowerCase()
+    );
 
-        if (!record) {
+    if (!record) {
 
+        if (bundles.length === 0) {
+            status.textContent = "Keine verschlüsselten Datensätze geladen. Prüfe private-data.js.";
+        } else {
             status.textContent = "Zugangscode nicht gefunden.";
-
-            return;
         }
+
+        return;
+    }
 
 
         try {
