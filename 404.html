@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>404 – Seite nicht gefunden | Richard Mack</title>
+
+    <meta name="description"
+          content="Diese Seite konnte leider nicht gefunden werden. Zurück zum Portfolio von Richard Mack.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            background: #f5f1e9;
+            color: #39352f;
+
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .name {
+            margin-bottom: 65px;
+
+            font-size: 0.9rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #81796e;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 22vw, 11rem);
+            font-weight: 600;
+            letter-spacing: -0.08em;
+            line-height: 1;
+            color: #b7a995;
+        }
+
+        .divider {
+            width: 45px;
+            height: 1px;
+
+            margin: 32px auto;
+
+            background: #b7a995;
+        }
+
+        h1 {
+            margin-bottom: 16px;
+
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 500;
+        }
+
+        .description {
+            margin: 0 auto 32px;
+
+            max-width: 420px;
+
+            color: #777066;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .home-button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border: 1px solid #81796e;
+            border-radius: 30px;
+
+            color: #39352f;
+            background: transparent;
+
+            font-size: 0.95rem;
+            text-decoration: none;
+
+            transition: background 0.2s ease,
+                        color 0.2s ease;
+        }
+
+        .home-button:hover {
+            background: #39352f;
+            color: #f5f1e9;
+        }
+
+        .language-switch {
+            margin-top: 55px;
+
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .language-switch button {
+            border: none;
+            background: none;
+
+            color: #81796e;
+            font: inherit;
+            font-size: 0.8rem;
+
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        .language-switch button.active {
+            opacity: 1;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                margin-bottom: 50px;
+            }
+
+            .language-switch {
+                margin-top: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <div class="name">Richard Mack · Portfolio</div>
+
+        <div class="error-code">404</div>
+
+        <div class="divider"></div>
+
+        <h1 id="heading">Seite nicht gefunden</h1>
+
+        <p class="description" id="description">
+            Die Seite, die du suchst, existiert leider nicht
+            oder wurde verschoben.
+        </p>
+
+        <a href="./" class="home-button" id="home-button">
+            Zurück zur Startseite
+        </a>
+
+        <div class="language-switch">
+            <button id="de-button" class="active"
+                    onclick="setLanguage('de')">
+                DE
+            </button>
+
+            <button id="en-button"
+                    onclick="setLanguage('en')">
+                EN
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        function setLanguage(language) {
+
+            const heading = document.getElementById("heading");
+            const description = document.getElementById("description");
+            const homeButton = document.getElementById("home-button");
+
+            const deButton = document.getElementById("de-button");
+            const enButton = document.getElementById("en-button");
+
+            if (language === "en") {
+
+                document.documentElement.lang = "en";
+
+                heading.textContent = "Page not found";
+
+                description.textContent =
+                    "Unfortunately, the page you are looking for does not exist or has been moved.";
+
+                homeButton.textContent = "Back to homepage";
+
+                enButton.classList.add("active");
+                deButton.classList.remove("active");
+
+            } else {
+
+                document.documentElement.lang = "de";
+
+                heading.textContent = "Seite nicht gefunden";
+
+                description.textContent =
+                    "Die Seite, die du suchst, existiert leider nicht oder wurde verschoben.";
+
+                homeButton.textContent = "Zurück zur Startseite";
+
+                deButton.classList.add("active");
+                enButton.classList.remove("active");
+
+            }
+        }
+    </script>
+
+</body>
+</html>
