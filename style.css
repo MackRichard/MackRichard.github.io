@@ -390,7 +390,6 @@ a.project:hover { border-color: #a99568; }
 
 #currently > .wrap {
     width: calc(100% - 48px);
-    max-width: 900px;
 
     margin-left: auto;
     margin-right: auto;
