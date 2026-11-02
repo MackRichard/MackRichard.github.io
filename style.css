@@ -385,20 +385,3 @@ a.project:hover { border-color: #a99568; }
 .private-section[data-unlocked="true"] {
     min-height: auto;
 }
-
-/* Aktuell: gleiche Breite und Ausrichtung wie andere Abschnitte */
-
-#currently > .wrap {
-    width: calc(100% - 48px);
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#currently .private-placeholder {
-    width: 100%;
-    max-width: 100%;
-
-    margin-left: 0;
-    margin-right: 0;
-}
