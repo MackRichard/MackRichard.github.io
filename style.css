@@ -386,17 +386,20 @@ a.project:hover { border-color: #a99568; }
     min-height: auto;
 }
 
-/* Aktuell: gleiche Ausrichtung wie die anderen Abschnitte */
+/* Aktuell: gleiche Breite und Ausrichtung wie andere Abschnitte */
 
 #currently > .wrap {
     width: calc(100% - 48px);
+    max-width: 900px;
+
     margin-left: auto;
     margin-right: auto;
 }
 
 #currently .private-placeholder {
-    width: calc(100% - 48px);
-    max-width: none;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+
+    margin-left: 0;
+    margin-right: 0;
 }
