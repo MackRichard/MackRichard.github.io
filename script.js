@@ -299,7 +299,7 @@ scheduleStreakUpdate();
 
         if (separator === -1) {
 
-            status.textContent = "Ungültiger Zugangscode.";
+            status.textContent = "Ungültiger oder abgelaufener Zugangscode.";
 
             return;
         }
@@ -313,7 +313,7 @@ scheduleStreakUpdate();
             !/^[A-Za-z0-9_-]{22}$/.test(secret)
         ) {
 
-            status.textContent = "Ungültiger Zugangscode.";
+            status.textContent = "Ungültiger oder abgelaufener Zugangscode.";
 
             return;
         }
