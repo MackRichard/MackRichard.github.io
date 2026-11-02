@@ -385,3 +385,13 @@ a.project:hover { border-color: #a99568; }
 .private-section[data-unlocked="true"] {
     min-height: auto;
 }
+
+/* Aktuell-Bereich an die anderen Abschnitte anpassen */
+
+#currently .wrap {
+    width: calc(100% - 48px);
+    max-width: 825px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
