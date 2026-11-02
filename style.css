@@ -395,7 +395,7 @@ a.project:hover { border-color: #a99568; }
 }
 
 #currently .private-placeholder {
-    width: 100%;
+    width: calc(100% - 48px);
     max-width: none;
     margin-left: 0;
     margin-right: 0;
