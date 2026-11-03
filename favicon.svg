@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64">
+
+    <!-- Hintergrund -->
+    <rect
+        width="64"
+        height="64"
+        rx="13"
+        fill="#f4efdf"
+    />
+
+    <!-- Code-Symbol -->
+    <text
+        x="32"
+        y="33"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="monospace"
+        font-size="29"
+        font-weight="700"
+        letter-spacing="-2"
+        fill="#29271f">
+        &lt;/&gt;
+    </text>
+
+</svg>
