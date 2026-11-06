@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description"
+          content="Einblicke in die Programmierprojekte von Richard Mack.">
+
+    <meta name="theme-color" content="#f4efdf">
+
+    <title>Projekte – Richard Mack</title>
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Vorhandene Sprachfunktion der Hauptseite verwenden -->
+    <script src="../script.js" defer></script>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <a class="brand" href="../">&lt;rm/&gt;</a>
+
+    <div class="header-actions">
+
+        <a href="../" class="back-link">
+            <span
+                data-de="Zurück zur Hauptseite"
+                data-en="Back to homepage">
+                Zurück zur Hauptseite
+            </span>
+        </a>
+
+        <button id="languageToggle"
+                type="button"
+                aria-label="Switch language to English">
+            EN
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="wrap">
+
+    <!-- Einleitung -->
+
+    <section class="page-intro">
+
+        <p class="eyebrow"
+           data-de="PORTFOLIO / PROJEKTE"
+           data-en="PORTFOLIO / PROJECTS">
+            PORTFOLIO / PROJEKTE
+        </p>
+
+        <h1 data-de="Meine Projekte"
+            data-en="My projects">
+            Meine Projekte
+        </h1>
+
+        <p
+            data-de="Eine Auswahl meiner bisherigen Programmierprojekte. Hier gebe ich einen Einblick in die Anwendungen, Simulationen und Experimente, die ich selbst entwickelt habe."
+            data-en="A selection of my programming projects. Here I provide insights into applications, simulations and experiments I have developed myself.">
+            Eine Auswahl meiner bisherigen Programmierprojekte. Hier gebe ich einen Einblick in die Anwendungen, Simulationen und Experimente, die ich selbst entwickelt habe.
+        </p>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- CONWAY'S GAME OF LIFE             -->
+    <!-- ================================= -->
+
+    <section class="project-section" id="game-of-life">
+
+        <div class="project-heading">
+
+            <div>
+                <h2>Conway's Game of Life</h2>
+
+                <p
+                    data-de="Eine Simulation des zellulären Automaten, bei dem aus wenigen einfachen Regeln komplexe Muster entstehen."
+                    data-en="A simulation of the cellular automaton in which a few simple rules create complex patterns.">
+                    Eine Simulation des zellulären Automaten, bei dem aus wenigen einfachen Regeln komplexe Muster entstehen.
+                </p>
+            </div>
+
+            <a
+                class="repository-link"
+                href="https://github.com/MackRichard/Conways-Game-of-Life"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span
+                    data-de="Repository"
+                    data-en="Repository">
+                    Repository
+                </span>
+
+                ↗
+
+            </a>
+
+        </div>
+
+        <div class="technologies">
+            <span>Python</span>
+            <span>Pygame</span>
+        </div>
+
+
+        <div class="gallery gallery-two">
+
+            <figure>
+
+                <a href="images/conways-settings.png" target="_blank">
+                    <img
+                        src="images/conways-settings.png"
+                        alt="Einstellungsmenü von Conway's Game of Life"
+                        loading="lazy">
+                </a>
+
+                <figcaption
+                    data-de="Einstellungen für Geschwindigkeit, Nachbarschaft und Spielregeln."
+                    data-en="Settings for speed, neighborhood and simulation rules.">
+                    Einstellungen für Geschwindigkeit, Nachbarschaft und Spielregeln.
+                </figcaption>
+
+            </figure>
+
+
+            <figure>
+
+                <a href="images/conways-simulation.png" target="_blank">
+                    <img
+                        src="images/conways-simulation.png"
+                        alt="Laufende Conway's Game of Life Simulation"
+                        loading="lazy">
+                </a>
+
+                <figcaption
+                    data-de="Die laufende Simulation mit Steuerung und Bevölkerungsstatistik."
+                    data-en="The running simulation with controls and population statistics.">
+                    Die laufende Simulation mit Steuerung und Bevölkerungsstatistik.
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- PERLIN NOISE MAP                  -->
+    <!-- ================================= -->
+
+    <section class="project-section" id="perlin-noise">
+
+        <div class="project-heading">
+
+            <div>
+                <h2>Perlin Noise Map</h2>
+
+                <p
+                    data-de="Ein Experiment mit Perlin Noise zur Erzeugung zusammenhängender, organisch wirkender Strukturen."
+                    data-en="An experiment with Perlin noise to generate connected, organic-looking structures.">
+                    Ein Experiment mit Perlin Noise zur Erzeugung zusammenhängender, organisch wirkender Strukturen.
+                </p>
+            </div>
+
+            <a
+                class="repository-link"
+                href="https://github.com/MackRichard/Perlin-Noise-Map"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span
+                    data-de="Repository"
+                    data-en="Repository">
+                    Repository
+                </span>
+
+                ↗
+
+            </a>
+
+        </div>
+
+        <div class="technologies">
+            <span>Python</span>
+        </div>
+
+
+        <div class="gallery gallery-single">
+
+            <figure>
+
+                <a href="images/perlin-noise-map.png" target="_blank">
+                    <img
+                        src="images/perlin-noise-map.png"
+                        alt="Visualisierung einer Perlin-Noise-Karte"
+                        loading="lazy">
+                </a>
+
+                <figcaption
+                    data-de="Visualisierung der generierten Perlin-Noise-Strukturen."
+                    data-en="Visualization of the generated Perlin noise structures.">
+                    Visualisierung der generierten Perlin-Noise-Strukturen.
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- ROULETTE                          -->
+    <!-- ================================= -->
+
+    <section class="project-section" id="roulette">
+
+        <div class="project-heading">
+
+            <div>
+                <h2>Roulette</h2>
+
+                <p
+                    data-de="Eine selbst entwickelte Roulette-Anwendung für Spielabläufe und Zufall. Das Projekt wurde vollständig ohne KI programmiert."
+                    data-en="A self-developed roulette application for game flow and randomness. The project was developed entirely without AI.">
+                    Eine selbst entwickelte Roulette-Anwendung für Spielabläufe und Zufall. Das Projekt wurde vollständig ohne KI programmiert.
+                </p>
+            </div>
+
+            <a
+                class="repository-link"
+                href="https://github.com/MackRichard/Roulette"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span
+                    data-de="Repository"
+                    data-en="Repository">
+                    Repository
+                </span>
+
+                ↗
+
+            </a>
+
+        </div>
+
+        <div class="technologies">
+            <span>Python</span>
+        </div>
+
+
+        <div class="gallery gallery-two roulette-gallery">
+
+            <figure>
+
+                <a href="images/roulette-game.png" target="_blank">
+                    <img
+                        src="images/roulette-game.png"
+                        alt="Roulette-Spiel mit Zahlenanzeige"
+                        loading="lazy">
+                </a>
+
+                <figcaption
+                    data-de="Beispiel einer Roulette-Spielrunde."
+                    data-en="Example of a roulette round.">
+                    Beispiel einer Roulette-Spielrunde.
+                </figcaption>
+
+            </figure>
+
+
+            <figure>
+
+                <a href="images/roulette-win.png" target="_blank">
+                    <img
+                        src="images/roulette-win.png"
+                        alt="Gewinnanzeige der Roulette-Anwendung"
+                        loading="lazy">
+                </a>
+
+                <figcaption
+                    data-de="Beispiel einer Gewinnanzeige."
+                    data-en="Example of a winning result.">
+                    Beispiel einer Gewinnanzeige.
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- PYTHON CALCULATOR                 -->
+    <!-- ================================= -->
+
+    <section class="project-section" id="calculator">
+
+        <div class="project-heading">
+
+            <div>
+                <h2>Python Calculator</h2>
+
+                <p
+                    data-de="Ein grafischer Taschenrechner mit einer Benutzeroberfläche auf Basis von Tkinter. Vollständig ohne KI entwickelt."
+                    data-en="A graphical calculator with a user interface based on Tkinter. Developed entirely without AI.">
+                    Ein grafischer Taschenrechner mit einer Benutzeroberfläche auf Basis von Tkinter. Vollständig ohne KI entwickelt.
+                </p>
+            </div>
+
+            <a
+                class="repository-link"
+                href="https://github.com/MackRichard/python-calculator"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span
+                    data-de="Repository"
+                    data-en="Repository">
+                    Repository
+                </span>
+
+                ↗
+
+            </a>
+
+        </div>
+
+        <div class="technologies">
+            <span>Python</span>
+            <span>Tkinter</span>
+        </div>
+
+
+        <div class="gallery gallery-calculator">
+
+            <figure>
+
+                <a href="images/python-calculator.png" target="_blank">
+                    <img
+                        src="images/python-calculator.png"
+                        alt="Grafische Benutzeroberfläche des Python Taschenrechners"
+                        loading="lazy">
+                </a>
+
+                <figcaption
+                    data-de="Die grafische Benutzeroberfläche des Taschenrechners."
+                    data-en="The graphical user interface of the calculator.">
+                    Die grafische Benutzeroberfläche des Taschenrechners.
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+    </section>
+
+
+    <!-- Zurück -->
+
+    <div class="bottom-link">
+
+        <a href="../" class="back-button">
+            <span
+                data-de="← Zurück zur Hauptseite"
+                data-en="← Back to homepage">
+                ← Zurück zur Hauptseite
+            </span>
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer class="footer wrap">
+
+    <div>
+        Berlin, Germany (CET / CEST)
+        <span>© 2026 Richard Mack</span>
+    </div>
+
+    <a href="../">
+        <span
+            data-de="Hauptseite"
+            data-en="Homepage">
+            Hauptseite
+        </span>
+    </a>
+
+</footer>
+
+
+</body>
+</html>

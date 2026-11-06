@@ -473,3 +473,9 @@ dd { margin: 3px 0 0; font-weight: 680; font-size: 14px; line-height: 1.5; }
 .private-section[data-unlocked="true"] {
     min-height: auto;
 }
+
+/* Link zur Projekt-Unterseite */
+
+.projects-more {
+    margin-top: 28px;
+}

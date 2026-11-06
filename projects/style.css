@@ -1,0 +1,441 @@
+/* ===================================
+   GRUNDLAGEN
+=================================== */
+
+:root {
+    color-scheme: light;
+
+    --paper: #f4efdf;
+    --paper-alt: #eee5ce;
+    --card: #faf6eb;
+
+    --ink: #29271f;
+    --muted: #6c685c;
+    --line: #d8cfba;
+    --accent: #84652b;
+
+    --width: 1080px;
+    --pad: clamp(22px, 5vw, 68px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    background: var(--paper);
+    color: var(--ink);
+
+    font-family: Inter, ui-sans-serif, system-ui,
+        -apple-system, "Segoe UI", sans-serif;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.wrap {
+    width: min(
+        var(--width),
+        calc(100% - 2 * var(--pad))
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ===================================
+   HEADER
+=================================== */
+
+.header {
+    width: min(
+        1240px,
+        calc(100% - 2 * var(--pad))
+    );
+
+    min-height: 76px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 750;
+    letter-spacing: -.045em;
+    text-decoration: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.back-link {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+#languageToggle {
+    border: 1px solid var(--line);
+    border-radius: 5px;
+
+    background: transparent;
+    color: var(--ink);
+
+    padding: 7px 10px;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    cursor: pointer;
+}
+
+#languageToggle:hover {
+    background: var(--paper-alt);
+}
+
+
+/* ===================================
+   SEITENEINLEITUNG
+=================================== */
+
+.page-intro {
+    padding-top: clamp(75px, 10vw, 115px);
+    padding-bottom: 65px;
+}
+
+.eyebrow {
+    margin: 0 0 17px;
+
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .12em;
+}
+
+h1 {
+    margin: 0;
+
+    font-size: clamp(46px, 7vw, 76px);
+    line-height: 1.1;
+    letter-spacing: -.065em;
+    font-weight: 760;
+}
+
+.page-intro > p:last-child {
+    max-width: 680px;
+    margin: 22px 0 0;
+
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* ===================================
+   PROJEKTABSCHNITTE
+=================================== */
+
+.project-section {
+    padding: 45px 0 55px;
+    border-top: 1px solid var(--line);
+}
+
+.project-section:last-of-type {
+    border-bottom: 1px solid var(--line);
+}
+
+.project-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.project-heading h2 {
+    margin: 0 0 10px;
+
+    font-size: clamp(25px, 3.5vw, 34px);
+    line-height: 1.2;
+    letter-spacing: -.045em;
+}
+
+.project-heading p {
+    max-width: 720px;
+    margin: 0;
+
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* ===================================
+   REPOSITORY-LINK
+=================================== */
+
+.repository-link {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 5px;
+
+    color: var(--accent);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.repository-link:hover {
+    color: var(--ink);
+}
+
+
+/* ===================================
+   TECHNOLOGIEN
+=================================== */
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.technologies span {
+    padding: 3px 9px;
+
+    border: 1px solid var(--line);
+    border-radius: 4px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ===================================
+   BILDERGALERIE
+=================================== */
+
+.gallery {
+    display: grid;
+    align-items: start;
+    gap: 22px;
+
+    margin-top: 28px;
+}
+
+.gallery-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gallery-single {
+    grid-template-columns: minmax(0, 620px);
+}
+
+.gallery-calculator {
+    grid-template-columns: minmax(0, 430px);
+}
+
+.gallery figure {
+    min-width: 0;
+    margin: 0;
+}
+
+.gallery figure a {
+    display: block;
+
+    padding: 8px;
+
+    background: var(--card);
+
+    border: 1px solid var(--line);
+    border-radius: 6px;
+}
+
+.gallery img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 3px;
+}
+
+.gallery figcaption {
+    margin-top: 10px;
+
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* Roulette-Screenshots */
+
+.roulette-gallery {
+    grid-template-columns: repeat(2, minmax(0, 405px));
+}
+
+
+/* ===================================
+   ZURÜCK-BUTTON
+=================================== */
+
+.bottom-link {
+    padding: 55px 0 75px;
+}
+
+.back-button {
+    display: inline-block;
+
+    padding: 11px 17px;
+
+    border: 1px solid var(--line);
+    border-radius: 5px;
+
+    color: var(--ink);
+
+    font-size: 13px;
+    font-weight: 650;
+
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: var(--paper-alt);
+}
+
+
+/* ===================================
+   FOOTER
+=================================== */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding-top: 23px;
+    padding-bottom: 23px;
+
+    border-top: 1px solid var(--line);
+
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.footer div span {
+    margin-left: 15px;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+
+@media (max-width: 780px) {
+
+    .project-heading {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .gallery-two,
+    .roulette-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-single,
+    .gallery-calculator {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    .header {
+        min-height: 70px;
+    }
+
+    .header-actions {
+        gap: 13px;
+    }
+
+    .back-link {
+        font-size: 11px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .page-intro {
+        padding-top: 65px;
+        padding-bottom: 45px;
+    }
+
+    .project-section {
+        padding: 35px 0 42px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .footer div span {
+        display: block;
+        margin: 4px 0 0;
+    }
+
+}
