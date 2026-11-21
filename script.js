@@ -18,7 +18,7 @@ try {
 // ======================================
 
 // Dein bestätigter Wert am 30. Oktober 2026
-const STREAK_BASE = 1131;
+const STREAK_BASE = 1130;
 
 // Datum des Basiswertes
 const STREAK_BASE_DATE = Date.UTC(2026, 9, 30);
